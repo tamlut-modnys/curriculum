@@ -1,7 +1,7 @@
 #   Introduction to Computing and Development
 ##  Hoon School Lesson 0
 
-**Homework**: https://forms.gle/NTPfqj4L6jUT5ohg8
+**Homework**: https://forms.gle/UPqvpNLy1Ns3aXVs6
 
 Video: TBA
 
@@ -349,7 +349,6 @@ https://github.com/urbit/hoon.vim
 https://github.com/urbit/hoon-mode.el
 
 
-
 ### Git
 
 Git is an indispensable tool for programmers. It lets you upload your projects, back up them up, share them and collaborate with others, and store the entire version history, so you can go back and forth across time.
@@ -378,4 +377,4 @@ Although using the terminal is more challenging at first, learning it greatly un
 * Copying a file from one place to another
 * Deleting a file
 
-There are many resources online to help you learn these skills. The instructions will differ depending on whether you use Linux/Mac or Windows.
+There are many resources online to help you learn these skills. The details will differ depending on whether you use Linux/Mac or Windows.
