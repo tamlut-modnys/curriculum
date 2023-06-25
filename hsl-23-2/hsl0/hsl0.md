@@ -89,16 +89,15 @@ We begin the study of **formal systems**. A formal system consists of:
 
 Why is it important to study systems like this? Well, suppose you can say the axioms correspond to all possible starting points of a computer, and the inference rules to the possible actions it can take. Then the set of theorems of the formal system precisely describes every possible state of the computer. This gives us correspondences such as:
 
-<p style="text-align: center;">This formal system <b>has a theorem</b> with X property <=> This computer <b>can reach a state</b>  with X property</p>
+This formal system **has a theorem** with X property <=> This computer **can reach a state** with X property
 
-<p style="text-align: center;">(For example, you can prove that your computer can perform some computation) </p>
+*For example, you can prove that your computer can perform some computation*
 
-<p style="text-align: center;">This formal system <b>has no theorem</b> with Y property <=> This computer <b>cannot reach a state</b>  with Y property</p>
+This formal system **has no theorem** with Y property <=> This computer **cannot reach a state**  with Y property
 
-<p style="text-align: center;"><b>All theorems of this formal system</b> have Z property <=>  <b>All states of this computer</b> have Z property</p>
+**All theorems of this formal system** have Z property <=>  **All states of this computer** have Z property
 
-<p style="text-align: center;">(For example, you could prove your computer cannot crash under certain circumstances)</p>
-
+*For example, you could prove your computer cannot crash under certain circumstances*
 
 
 This means that formal systems are extremely powerful tools for modeling and reasoning about computers -- you might say a formal system is exactly what a computer is, in a Platonic (idealized) sense.
@@ -119,7 +118,7 @@ Can you come up with some theorems in this system?
 
 ![](Images/54.png)
 
-**Challenge:** Is the string "MU" a theorem in this system? Why or why not?
+**Hard Challenge:** Is the string "MU" a theorem in this system? Why or why not?
 
 Here is another example of a formal system.
 ![](Images/55.png)
@@ -341,13 +340,15 @@ And here is another syntax highlighter you can try: https://marketplace.visualst
 
 If you use VSCodium, you will have to download the .vsix file and then manually install it by going to Settings -> Extensions -> ... -> Install from VSIX.
 
-For further help on learning how to use VSCode or any IDE, there are plenty of resources available online.
+
 
 Users of Vim and Emacs are welcome to try the following extensions, but be warned that there are reports that the install process is buggy or out of date:
+
 https://github.com/urbit/hoon.vim
 
 https://github.com/urbit/hoon-mode.el
 
+For further help on learning how to use VSCode or any IDE, there are plenty of resources available online.
 
 ### Git
 
