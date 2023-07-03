@@ -1,3 +1,28 @@
+---
+title: "Introduction to Urbit and Hoon"
+keypoints:
+- "Booting a fakezod"
+- "Using Dojo for syncing files and writing code"
+- "Representing nouns in binary trees"
+- "Tree navigation using direct addressing, lark notation, and faces"
+- "Basic Nock"
+- "Building nouns with :- (colhep)"
+- "Pinning to the subject with =+ (tislus) and grabbing from it with addressing"
+- "Calling gates with %-"
+- "Apply auras to apply interpretations to an atom."
+- "Pinning a face to store a value under a name for later reference"
+runes:
+- "`:-`"
+- "`=+`"
+- "`.+`"
+- "`%-`"
+- "`=/`"
+readings:
+
+- Booting and using your ship: "https://urbit.org/getting-started/cli "
+- "https://developers.urbit.org/guides/core/hoon-school/B-syntax"
+---
+
 #   Introduction to Urbit and Hoon
 ##  Hoon School Lesson 1
 

@@ -1,3 +1,17 @@
+---
+title: "Introduction to Computing and Development"
+Key Points:
+- "Computer data is encoded in binary"
+- "Information as data + interpretation"
+- "What is a formal system?
+- "Why do formal systems matter for understanding computers?"
+- "Understand what a function is, in the context of a formal system"
+- "Simple recursion and time complexity"
+- "Using an IDE"
+- "Using Git"
+- "Using a terminal"
+---
+
 #   Introduction to Computing and Development
 ##  Hoon School Lesson 0
 
