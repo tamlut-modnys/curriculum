@@ -12,11 +12,11 @@ Key Points:
 - "Apply auras to apply interpretations to an atom."
 - "Pinning a face to store a value under a name for later reference"
 Runes:
-- "`:-`"
-- "`=+`"
-- "`.+`"
-- "`%-`"
-- "`=/`"
+- "`:-` (colhep)"
+- "`=+` (tislus)"
+- "`.+` (dotlus)"
+- "`%-` (cenhep)"
+- "`=/` (tisfas)"
 Links:
 - Booting and using your ship: "https://urbit.org/getting-started/cli "
 - Setting up developer environment: "https://developers.urbit.org/guides/core/environment"
