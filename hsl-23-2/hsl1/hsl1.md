@@ -156,6 +156,7 @@ But I just mentioned that Urbit's structured as a binary tree, and these are cel
 
 
 If we are storing data in binary trees, we need to be able to access parts of the tree. We can number the nodes of the tree as follows, and obtain addresses for every location in the tree. For example, 8 corresponds to the value stored in node 8, 1 corresponds to the whole tree, 2 corresponds to the subtree under node 2, 5 corresponds to the subtree under node 5, and so on.
+
 ![](Images/04.png)
 
 For a concrete example, consider the following noun:
@@ -163,11 +164,13 @@ For a concrete example, consider the following noun:
 [[[8 9] [10 11]][[12 13] [14 15]]]
 ```
 We can represent it in a tree in the following manner.
+
 ![](Images/05.png)
 
 Grabbing address 1 grabs the whole tree. Grabbing address 2 grabs the left subtree [[8 9] [10 11]]. Grabbing address 5 grabs the right subtree of the left subtree, [10 11]. And grabbing address 10 grabs the value 10. 
 
 To see this more clearly, we can also consider this equivalent representation. Here we show the structure returned at each address within the tree node.
+
 ![](Images/06.png)
 
 ## Tree Navigation in Urbit
@@ -218,6 +221,7 @@ Note that this means `[1 [2 [3 4]]]` and `[1 2 3 4]` are simply two ways of writ
 
 ### Lark Notation
 Above, when we used addresses to navigate within a tree, that's a bit like navigating in the real world with an instruction like, "Go to 200 Main St. in Springfield, Illinois". However, you could also navigate with something like "go right for 1 block, then go left for 2 blocks, then go right for 1 block." In Urbit this is what's called **lark notation**.
+
 ![](Images/08.png)
 
 Lark notation uses the four characters, `-, +, <, >`. You always begin with `-`  or`+` to indicate left or right, then `<` or `>` to indicate left or right, then continue alternating between these pairs. To see an example, we can return to our previous tree example in the Dojo.
@@ -284,28 +288,36 @@ However, we can access all the matches with this notation:
 We have just given a high level overview of the way that data is stored in your Urbit. However, we have said nothing about how the computer actually computes. **Nock** is the formal system that underlies Urbit. A Nock computation is a transformation from one binary tree of positive integers to another, using clearly specified rules.
 
 In the last lecture, we covered a simple arithmetical formal system. To jog your memory, here's the specification of the system, and an example of a derivation in the system.
+
 ![](Images/09.png)
+
 ![](Images/10.png)
 
 Recall that, not only could we reduce a tree that has specific values for every entry, we introduced the idea of a system that can't be computed until it receives an input.  We called this a **function**.
+
 ![](Images/11.png)
 
 Once it receives the input, it can substitute it, and then carry out the sequence of mechanical operations to return a particular output.
+
 ![](Images/12.png)
 
 
 Let's do some renaming. Instead of data, I will call it the **subject**, and instead of computation, I will call it the **formula**.
+
 ![](Images/13.png)
 
 We are approaching something that describes Nock, Urbit's machine code. In particular, any Nock code is a cell -- the head of which is the **subject**, (the data input to the computation), and the tail of which is the **formula**, (the computation to be performed). Both subject and formula are binary trees of positive integers.
 
 Let's go through a concrete example. **Nock 0** is a code that says "take the number immediately after the 0, and return what's at that address in the subject". Here, our subject is our binary tree `[[[8 9] [10 11]] [[12 13] [14 15]]]` that we worked with earlier. Interpreting the formula `[0 2]` we grab the subtree of that tree under address 2, returning `[[8 9] [10 11]]`. (If you forget why address 2 is that subtree, feel free to scroll up and look at the tree numbering again).
+
 ![](Images/14.png)
 
 Nock operations can also be chained together. **Nock 4** is a code that says "compute the formula after the 4 on the subject, and then increment the result by 1". Here, we first pull out the Nock 4 to get `[[50 [8 9]] [0 2]]`. Then, recalling the Nock 0 rule, we pull out the data in the subject at address 2, which is the atom `50`. Finally, we increment `50` to get `51`.
+
 ![](Images/16.png)
 
 **Nock 3** works similarly to Nock 4, except it returns a `0` if the result of the computation is an atom, and `1` if it's a cell.
+
 ![](Images/17.png)
 
 A **Nock 5** is followed by two formulas. It says: compute both of these formulas on the subject. Then return 0 if the results are equal, and 1 if not.
@@ -355,15 +367,19 @@ Going back to our humble colhep rune, here we see something interesting.
  The colhep rune takes two arguments. But it seems that its second argument is not a number or a cell, but a colhep rune followed by two numbers. What's going on here? 
 
 Colhep is a rune with two children, like so
+
 ![](Images/19.png)
 
 Each of these two children could be nouns, but more generally, they can be any valid Hoon expression that reduces to a noun.
+
 ![](Images/22.png)
 
 What we did here is shown in the following image. It's perfectly correct Hoon. In this case the inner Hoon expression `:-  2  3` parses to the noun `[2 3]`
+
 ![](Images/23.png)
 
 Recalling Urbit's binary tree structure, we can parse Hoon expressions as trees of runes and their children. It's very useful to be able to translate back and forth between a piece of Hoon and its tree form.
+
 ![](Images/24.png)
 
 Consider the similar Hoon expression
@@ -375,12 +391,14 @@ Again, this may be slightly confusing at first. Is a rune a child of a rune? Doe
 > :-  :-  1  2  3
 [[1 2] 3]
 ```
+
 ![](Images/25.png)
 
 ## Nock-like Operations
 Let's learn a few more runes and do some very Nock-like operations with them.
 
 The `=+` rune takes two children. The first one is some noun to set as the head of the subject, and the second is a complete Hoon expression, perhaps doing something with the noun you just pinned.
+
 ![](Images/26.png)
 
 What does it mean to make something the head of the subject? Consider the graphic here. Outside of an expression  `=+  x`, the subject is `old subject`. Inside of it, the new subject is a tree whose leftmost branch is `x` and rightmost branch is `old subject`. Remembering our tree addressing, this means that `x` lives at address 2, and the old subject, which used to live at address 1, now lives at address 3.
@@ -421,7 +439,9 @@ Finally, instead of explicit addressing, we could have used lark notation for al
 ```
 
 The .+ rune takes one child that reduces to an atom, and simply increments the atom by 1
+
 ![](Images/29.png)
+
 ```
 >  .+  1
 2
@@ -437,6 +457,7 @@ Let's try combining the two runes we just learned into one Hoon expression. We p
 ```
 
 To parse this expression as a tree,
+
 ![](Images/28.png)
 
 These operations pretty much correspond to Nock 0 and Nock 4 that we learned earlier.
@@ -452,6 +473,7 @@ To invoke these tools in Hoon, we do something called "calling a **gate**". It l
 3
 ```
 What's going on here? `%-` is the rune used to call a gate. Its first child is a gate to call, and its second child is the _single_ argument (single Hoon expression that reduces to a single noun) to that gate. In this case, the single argument is the cell `[1 2]`.
+
 ![](Images/30.png)
 
 Somewhere in Urbit's big binary tree, there is something defined called `add`. When we call `%- add`, it looks up the closest instance of `add` that is defined in the tree, and substitutes it (recall how we searched for the face `b` in the structure `[b=1 [b=2 [b=3 b=4]]]` earlier). In this case the closest definition is the standard library function, but if you redefined `add` locally, it would grab that definition instead.
@@ -472,6 +494,7 @@ nest-fail
 ```
 
 If we expand this piece of code into the tree view, it looks like this:
+
 ![](Images/31.png)
 
 
@@ -545,6 +568,7 @@ Hoon's type system has many more auras than what we can cover here. You can find
 
 ## Pinning Faces
 When coding, we'd often like to assign a name to a value so we can reference it later. To do so, we usually use the rune `=/`, pronounced "tisfas". It takes three children. The first is either just a variable name (like `foo` or `n`) or name=type, like (`foo=@t` or `n=@ud`). The second is a complete Hoon expression that reduces to a noun. The third is another complete Hoon expression that probably uses the face you just assigned.
+
 ![](Images/32.png)
 
 
