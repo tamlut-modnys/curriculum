@@ -1,6 +1,6 @@
 ---
-title: "Introduction to Urbit and Hoon"
-keypoints:
+Title: "Introduction to Urbit and Hoon"
+Key Points:
 - "Booting a fakezod"
 - "Using Dojo for syncing files and writing code"
 - "Representing nouns in binary trees"
@@ -11,16 +11,20 @@ keypoints:
 - "Calling gates with %-"
 - "Apply auras to apply interpretations to an atom."
 - "Pinning a face to store a value under a name for later reference"
-runes:
+Runes:
 - "`:-`"
 - "`=+`"
 - "`.+`"
 - "`%-`"
 - "`=/`"
-readings:
-
+Links:
 - Booting and using your ship: "https://urbit.org/getting-started/cli "
-- "https://developers.urbit.org/guides/core/hoon-school/B-syntax"
+- Setting up developer environment: "https://developers.urbit.org/guides/core/environment"
+- Simple Nock introduction: "https://blog.timlucmiptev.space/part1.html"
+- Official Nock documentation: "https://developers.urbit.org/reference/nock"
+- Hoon syntax: "https://developers.urbit.org/guides/core/hoon-school/B-syntax"
+- Rune pronounciations: "https://developers.urbit.org/guides/core/hoon-school/A-intro"
+- Aura reference: "https://developers.urbit.org/reference/hoon/auras"
 ---
 
 #   Introduction to Urbit and Hoon
