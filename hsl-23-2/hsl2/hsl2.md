@@ -1,18 +1,21 @@
 ---
-Title: "Subject Oriented Programming, Syntax, and Auras"
-Key Points:
-- "Hoon, like Nock, is a subject oriented language"
-- "The subject is a binary tree which represents the data context that you're executing code in"
-- "A limb is a part of the subject, a wing is a search path into the subject"
-- "Every rune can be written in both tall form and wide form"
-- "Some runes have sugar syntax, which is an even more compact way to write them"
-- "Be able to translate between tall, wide, and sugar representations of the same code"
-- "Auras nest inside each other characterwise"
-- "Use ^- (kethep) and ^+ (ketlus) to cast nouns to auras.
-- "Use ^* (kettar) to get the bunt (default value) of a type"
-- "Terms are special values in Hoon, with aura @tas, that are each their own unique type"
-- "Use !> (zapgar) to check the type of an expression"
 
+Runes:
+- "`=>` (tisgar)"
+- "`=<` (tisgal)"
+- "`=.` (tisdot)"
+- "`=:` (tiscol)"
+- "`:+` (collus)"
+- "`:^` (colket)"
+- "`:*` (coltar)"
+- "`:+` (cenlus)"
+- "`:^` (cenket)"
+- "`:*` (centar)"
+- "`^-` (kethep)"
+- "`^+` (kethep)"
+- "`^*` (kettar)"
+- "`^=` (kettis)"
+- "`!>` (zapgar)"
 Links:
 - Limbs and Wings: "https://developers.urbit.org/reference/hoon/limbs/limb"
 - Hoon Irregular (Sugar) Forms: "https://developers.urbit.org/reference/hoon/irregular"
