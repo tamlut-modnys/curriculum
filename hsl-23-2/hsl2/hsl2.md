@@ -1,36 +1,25 @@
 ---
-Title: "Subject Oriented Programming, Syntax, and Auras"
+Title: "Introduction to Urbit and Hoon"
 Key Points:
-- "Hoon, like Nock, is a subject oriented language"
-- "The subject is a binary tree which represents the data context that you're executing code in"
-- "A limb is a part of the subject, a wing is a search path into the subject"
-- "Every rune can be written in both tall form and wide form"
-- "Some runes have sugar syntax, which is an even more compact way to write them"
-- "Be able to translate between tall, wide, and sugar representations of the same code"
-- "Auras nest inside each other characterwise"
-- "Use ^- (kethep) and ^+ (ketlus) to cast nouns to auras.
-- "Use ^* (kettar) to get the bunt (default value) of a type"
-- "Terms are special values in Hoon, with aura @tas, that are each their own unique type"
-- "Use !> (zapgar) to check the type of an expression"
+- "Booting a fakezod"
+- "Using Dojo for syncing files and writing code"
+- "Representing nouns in binary trees"
+- "Tree navigation using direct addressing, lark notation, and faces"
+- "Basic Nock"
+- "Building nouns with :- (colhep)"
+- "Pinning to the subject with =+ (tislus) and grabbing from it with addressing"
+- "Calling gates with %-"
+- "Apply auras to apply interpretations to an atom."
+- "Pinning a face to store a value under a name for later reference"
 Runes:
-- "`=>` (tisgar)"
-- "`=<` (tisgal)"
-- "`=.` (tisdot)"
-- "`=:` (tiscol)"
-- "`:+` (collus)"
-- "`:^` (colket)"
-- "`:*` (coltar)"
-- "`:+` (cenlus)"
-- "`:^` (cenket)"
-- "`:*` (centar)"
-- "`^-` (kethep)"
-- "`^+` (kethep)"
-- "`^*` (kettar)"
-- "`^=` (kettis)"
-- "`!>` (zapgar)"
+- "`:-` (colhep)"
+- "`=+` (tislus)"
+- "`.+` (dotlus)"
+- "`%-` (cenhep)"
+- "`=/` (tisfas)"
 Links:
-- Limbs and Wings: "https://developers.urbit.org/reference/hoon/limbs/limb"
-- Hoon Irregular (Sugar) Forms: "https://developers.urbit.org/reference/hoon/irregular"
+- Booting and using your ship: "https://urbit.org/getting-started/cli "
+- Setting up developer environment: "https://developers.urbit.org/guides/core/environment"
 - Simple Nock introduction: "https://blog.timlucmiptev.space/part1.html"
 - Official Nock documentation: "https://developers.urbit.org/reference/nock"
 - Hoon syntax: "https://developers.urbit.org/guides/core/hoon-school/B-syntax"
@@ -236,7 +225,7 @@ To help you remember this terminology, you can imagine the skeletal structure of
 ![](Images/070.png)
 
 
-## Wide Form
+## Syntax Forms
 
 So far we have been writing runes and expressions in a certain very constrained way, with expressions that look like this.
 
@@ -254,7 +243,7 @@ This is the most formal way of writing Hoon, with two spaces between runes and t
 
 ![](Images/080.png)
 
-The `:-  x  y` parses to a single cell, which is the second argument to `%-  pow  :-  x  y`.  Then `%- pow  :-  x  y` is the third argument to `=/  y  %-  div  :-  10  2  %- pow  :-  x  y`, and the second argument is `%-  div  :-  10  2`, which reduces to `5` -- so we are setting `y=5`. So on and so forth! 
+(Don't feel compelled to think through the whole thing) The `:-  x  y` parses to a single cell, which is the second argument to `%-  pow  :-  x  y`.  Then `%- pow  :-  x  y` is the third argument to `=/  y  %-  div  :-  10  2  %- pow  :-  x  y`, and the second argument is `%-  div  :-  10  2`, which reduces to `5` -- so we are setting `y=5`. So on and so forth! 
 
 The long story short is that we are setting `x` to `(1 + 1) = 2`, setting `y` to `10 / 2 = 5`, and calculating `2^5`.
 
@@ -262,6 +251,7 @@ Although we should be able to read such Hoon code, that really was quite some me
 
 The way that we have learned to write so far is called **tall form**. Although tall form is the most formal way, and all Hoon has a tall form expansion underneath, we have other, more legible options for writing.
 
+### Wide Form
 Every Hoon rune also has something called **wide form**. Let's see the wide form for runes we've learned. So the important thing to note is that in tall form, you use double spaces (gap) only, but in wide form you use single spaces (ace), and surround the arguments with parentheses.
 
 `:-` (colhep)
@@ -363,7 +353,7 @@ However, if we swap things and  use a wide form for `%-` and `:-` INSIDE of the 
 
 So always remember, wide inside tall, not tall inside wide. In fact, it's generally encouraged for readability to write Hoon code with tall form for outer expressions and wide form for inner ones.
 
-## Sugar Syntax
+### Sugar Syntax
 
 Some Hoon runes have an even more readable version called  **sugar syntax**. Not every rune has sugar syntax, but the most commonly used ones tend to have them. Actually, we have already used a few forms of sugar syntax.
 
