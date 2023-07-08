@@ -1,5 +1,5 @@
 ---
-
+Title: "Subject Oriented Programming, Syntax, and Auras"
 Runes:
 - "`=>` (tisgar)"
 - "`=<` (tisgal)"
