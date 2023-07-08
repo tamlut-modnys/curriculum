@@ -12,7 +12,6 @@ Key Points:
 - "Use ^* (kettar) to get the bunt (default value) of a type"
 - "Terms are special values in Hoon, with aura @tas, that are each their own unique type"
 - "Use !> (zapgar) to check the type of an expression"
-
 Runes:
 - "`=>` (tisgar)"
 - "`=<` (tisgal)"
@@ -29,7 +28,6 @@ Runes:
 - "`^*` (kettar)"
 - "`^=` (kettis)"
 - "`!>` (zapgar)"
-
 Links:
 - Limbs and Wings: "https://developers.urbit.org/reference/hoon/limbs/limb"
 - Hoon Irregular (Sugar) Forms: " https://developers.urbit.org/reference/hoon/irregular"
