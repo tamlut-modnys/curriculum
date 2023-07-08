@@ -12,23 +12,15 @@ Key Points:
 - "Use ^* (kettar) to get the bunt (default value) of a type"
 - "Terms are special values in Hoon, with aura @tas, that are each their own unique type"
 - "Use !> (zapgar) to check the type of an expression"
-Runes:
-- "`=>` (tisgar)"
-- "`=<` (tisgal)"
-- "`=.` (tisdot)"
-- "`=:` (tiscol)"
-- "`:+` (collus)"
-- "`:^` (colket)"
-- "`:*` (coltar)"
-- "`:+` (cenlus)"
-- "`:^` (cenket)"
-- "`:*` (centar)"
-- "`^-` (kethep)"
-- "`^+` (kethep)"
-- "`^*` (kettar)"
-- "`^=` (kettis)"
-- "`!>` (zapgar)"
 
+Links:
+- Limbs and Wings: "https://developers.urbit.org/reference/hoon/limbs/limb"
+- Hoon Irregular (Sugar) Forms: "https://developers.urbit.org/reference/hoon/irregular"
+- Simple Nock introduction: "https://blog.timlucmiptev.space/part1.html"
+- Official Nock documentation: "https://developers.urbit.org/reference/nock"
+- Hoon syntax: "https://developers.urbit.org/guides/core/hoon-school/B-syntax"
+- Rune pronounciations: "https://developers.urbit.org/guides/core/hoon-school/A-intro"
+- Aura reference: "https://developers.urbit.org/reference/hoon/auras"
 ---
 
 #   Subject Oriented Programming, Syntax, and Auras
