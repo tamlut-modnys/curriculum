@@ -30,7 +30,7 @@ Runes:
 - "`!>` (zapgar)"
 Links:
 - Limbs and Wings: "https://developers.urbit.org/reference/hoon/limbs/limb"
-- Hoon Irregular (Sugar) Forms: " https://developers.urbit.org/reference/hoon/irregular"
+- Hoon Irregular (Sugar) Forms: "https://developers.urbit.org/reference/hoon/irregular"
 - Simple Nock introduction: "https://blog.timlucmiptev.space/part1.html"
 - Official Nock documentation: "https://developers.urbit.org/reference/nock"
 - Hoon syntax: "https://developers.urbit.org/guides/core/hoon-school/B-syntax"
