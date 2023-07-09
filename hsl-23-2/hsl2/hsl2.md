@@ -52,7 +52,7 @@ Since we have started playing with Hoon code and using the Dojo to test things o
 * Pressing **down arrow** scrolls down through them. Keep pressing down arrow and you'll clear the line.
 * An inwards facing bracket `dojo<` means you have entered an incomplete Hoon expression. What you type next will be attached to the previous expression, unless you type **backspace/delete** to clear the incomplete line.
 * **Ctrl+a** to navigate to the beginning of the text line.
-* **Ctrl+e** to navigate to the beginning of the text line.
+* **Ctrl+e** to navigate to the end of the text line.
 * Completions: typing something incomplete and then pressing **tab** shows you the valid commands you can input to finish the line.
 
 
@@ -172,7 +172,7 @@ In this family we have already learned the following runes:
 *  `=<`  just `=>` but reversed
 *  `=+`  pins something to the head of the current subject.
 
-Let's introduce two more runes that allow us to work with the subject. The "dottis" rune allows us to modify a value in the subject. Technically, it creates a new copy of the subject with everything the same except one changed value. Then it uses that subject as the context for some code evaluation
+Let's introduce two more runes that allow us to work with the subject. The `=.` (tisdot) rune allows us to modify a value in the subject. Technically, it creates a new copy of the subject with everything the same except one changed value. Then it uses that subject as the context for some code evaluation
 
 ![](Images/050.png)
 
@@ -519,7 +519,7 @@ If we'll recall, this rune means to evaluate the first expression with the secon
 2
 ```
 
-Similarly to wide form, sugar syntax is ok under tall form, but you can't use tall form within sugar syntax (it's ok to mix sugar and wide). For example this piece of code tries to use tall form for `%-` and `:-` within a sugar syntax for `%+`. The Dojo won't let you enter it:
+Similarly to wide form, sugar syntax is ok under tall form, but you can't use tall form within sugar syntax (it's usually ok to mix sugar and wide with each other). For example this piece of code tries to use tall form for `%-` and `:-` within a sugar syntax for `%+`. The Dojo won't let you enter it:
 
 ```
 (mul 2 %-  add  :-  1  2)
