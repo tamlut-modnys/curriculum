@@ -345,7 +345,7 @@ Nock operations can also be chained together. **Nock 4** is a code that says "co
 
 ![](Images/16.png)
 
-**Nock 3** works similarly to Nock 4, except it returns a `0` if the result of the computation is an atom, and `1` if it's a cell.
+**Nock 3** works similarly to Nock 4, except it returns a `0` if the result of the computation is a cell, and `1` if it's an atom.
 
 ![](Images/17.png)
 
