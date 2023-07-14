@@ -17,7 +17,7 @@ Key Points:
 
 **Homework**: https://forms.gle/UPqvpNLy1Ns3aXVs6
 
-Video: TBA
+**Video**: https://www.youtube.com/watch?v=PwiNgrJh0Bo
 
 ## Administrative
 We have a syllabus for the course at the following link. It's very detailed -- please check it for anything administrative you may need to know, or for a list of useful resources.
