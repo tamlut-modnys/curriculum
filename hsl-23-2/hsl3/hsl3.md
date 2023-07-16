@@ -29,6 +29,8 @@ Links:
 - Hoon School Docs, Conditional Logic: "https://developers.urbit.org/guides/core/hoon-school/N-logic"
 - Aura reference: "https://developers.urbit.org/reference/hoon/auras"
 ---
+#   Molds and Decision Making
+##  Hoon School Lesson 3
 
 ## Introduction to Molds
 
