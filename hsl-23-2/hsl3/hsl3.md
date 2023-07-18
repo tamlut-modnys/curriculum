@@ -32,6 +32,11 @@ Links:
 #   Molds and Decision Making
 ##  Hoon School Lesson 3
 
+
+**Homework**: https://forms.gle/Cd8WhRbHUaXWXwXD8
+
+**Video**:  https://youtu.be/QKakP2EZYaQ
+
 ## Introduction to Molds
 
 In last class, we went over how to use Hoon's type system for atoms (single values). We learned that atoms can be cast to each other if they nest in a tree-like structure like this
