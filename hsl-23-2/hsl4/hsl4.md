@@ -16,6 +16,7 @@ Runes:
 Links:
 - List Library: "https://developers.urbit.org/reference/hoon/stdlib/2b"
 - Text Processing Library: "https://developers.urbit.org/reference/hoon/stdlib/4b"
+- Hoon Guide to Strings: "https://developers.urbit.org/guides/additional/strings"
 - Hoon School Docs, Text Processing I: "https://developers.urbit.org/guides/core/hoon-school/J-stdlib-text"
 - Hoon School Docs, Text Processing II: "https://developers.urbit.org/guides/core/hoon-school/P-stdlib-io"
 ---
@@ -306,7 +307,7 @@ Sugared:
 ```
 
 
-### Prepending to a list
+### Prepending to a List
 
 If lists are represented as this binary tree, is it faster to add something to the head of the list, or the tail of the list?
 
@@ -430,7 +431,7 @@ find-fork
 
 
 ### List Library
-The main benefit of structuring data as a list is that Hoon comes with a really broad library of gates to manipulate lists. Here is a link you can use to reference all the library gates: https://developers.urbit.org/reference/hoon/stdlib/2b
+The main benefit of structuring data as a list is that Hoon comes with a really broad library of gates to manipulate lists. Here is a link you can use to reference all the list library gates: https://developers.urbit.org/reference/hoon/stdlib/2b
 
 Some of these gates require that you prove that a null-terminated tuple is a list before it will accept it as input, while others will simply accept the null-terminated tuple. I don't have a great answer to why the behavior differs.
 
@@ -675,6 +676,8 @@ You can convert an atom of any aura to a tape with `scow`:
 
 ### Working with Tapes
 
+You can reference Hoon's text processing library here: https://developers.urbit.org/reference/hoon/stdlib/4b
+
 `cuss` makes a tape all uppercase:
 
 ```
@@ -772,6 +775,8 @@ Finally, you can combine both the angle bracket and curly bracket notation:
 =/  x  (sqt:rs .42)
 "The square root of 42 is {<x>}"
 ```
+
+For additional reading on Hoon's text system, this link goes over the same topics in a bit more detail: https://developers.urbit.org/guides/additional/strings
 
 ## Anonymous feedback:
 https://forms.gle/Ufih5kmbigT6bcrZ8
