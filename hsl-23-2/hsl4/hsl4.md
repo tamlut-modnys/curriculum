@@ -521,16 +521,18 @@ And if we pass in gth, it sorts them in descending order.
 24
 ```
 
-It takes the input gate and applies it pairwise across the elements of the list, accumulating a result, then outputting it. (There are some more important details about how it works, but we won't get into that until we start learning gates). It's the equivalent of `reduce` in other languages.
+It takes the input gate and applies it pairwise across the elements of the list, accumulating a result, then outputting it. (There are some more important details about how it works, but we won't get into that until we begin learning about gates). It's the equivalent of `reduce` in other languages.
 
-`turn` is very interesting too. It takes a gate and applies it to every element of the list. It's the equivalent of `map` in other languages. `dec` is a gate that takes a positive integer and decreases it by 1.
+`turn` is very interesting too. It takes a gate and applies it to every element of the list, returning the transformed list. It's the equivalent of `map` in other languages. 
+
+Here, `dec` is a gate that takes a positive integer and decreases it by 1.
 
 ```
-%+  turn  [2 3 4 5 6 ~]  dec
-1
+> %+  turn  [2 3 4 5 6 ~]  dec
+~[1 2 3 4 5]
 ```
 
-The gate you use as input to `turn` doesn't have to be predefined, you can write one yourself (same goes for `roll`, `sort`, etc.). We will learn how to write custom gates soon. For now, we can use this as an example. Here we define a custom gate called `mul5`, which takes a number and multiplies it by 5. 
+The gate you use as input to `turn` doesn't have to be predefined -- you can write one yourself (same goes for `roll`, `sort`, etc.). We will learn how to write custom gates soon -- don't worry about it yet. Here we define a custom gate called `mul5`, which takes a number and multiplies it by 5. 
 
 ```
 > =/  mul5  |=(a=@ud (mul a 5))
@@ -545,7 +547,9 @@ The gate you use as input to `turn` doesn't have to be predefined, you can write
 ~[~nec ~bud ~wes ~sev ~per]
 ```
 
-`skim` takes a list and a gate that takes one argument and returns either `%.y` or `%.n`. It returns a list of only the elements that made the gate return `%.y`. Here in the example, we define a custom gate `isodd` which returns `%.y` if a number is even and `%.n` otherwise.
+`skim` takes a list and a gate that takes one argument and returns either `%.y` or `%.n`. It returns a list of only the elements that made the gate return `%.y`. It's the equivalent of `filter` in other languages.
+
+Here in the example, we define a custom gate `isodd` which returns `%.y` if a number is even and `%.n` otherwise.
 
 ```
 =/  is-even  |=(a=@ud =((mod a 2) 0))
