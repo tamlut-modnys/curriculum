@@ -14,9 +14,9 @@ Runes:
 - "`|_` (barcab)"
 - "`%~` (censig)"
 Links:
--  (bar) runes: "https://developers.urbit.org/reference/hoon/rune/bar"
+- | (bar) runes: "https://developers.urbit.org/reference/hoon/rune/bar"
 - % (cen) runes: "https://developers.urbit.org/reference/hoon/rune/cen"
----
+--
 
 #   Cores and Doors
 ##  Hoon School Lesson 5
