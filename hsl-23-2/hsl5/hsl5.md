@@ -34,11 +34,6 @@ If you'll recall, every piece of Nock code is a pair of `[subject formula]`, wit
 
 ![](Images/010.png)
 
-We should recall that the formula encodes deterministic rules to transform the input data and get an output. For example, in the above code, we would first pull the `3` out of the formula, which says "compute the result and return `0` if it's a cell, and `1` if it's an atom". Then `[0 2]` means pull the data at the `+2` address in the subject. We pull the value `50` and return `1` because it's an atom.
-
-![](Images/020.png)
-
-
 Since in Nock (which underlies Hoon), both code and data are binary trees of numbers, it would be nice to store a binary tree at some location and say, this is code that you can pull out and run later whenever you wish. This is precisely what cores allow you to do.
 
 A core is simply a pattern for storing both code as data, and data as data in a binary tree. It's as simple as can be. The code as data goes on the left side, and the data as data goes on the right.
