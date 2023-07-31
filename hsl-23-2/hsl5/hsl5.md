@@ -48,7 +48,7 @@ code-as-data    data-as-data
 In Urbit terminology, the left side of the core, containing the code-as-data, is called the **battery**. The right side of the core, containing the data-as-data, is called the **payload**
 
 ```
-[battery payload]
+   [battery payload]
          core
     /            \
 battery         payload
@@ -97,11 +97,11 @@ What happens if we run our above code?
 >
 ```
 
-It returns cell, the head of which is summarized as `1.oks`, indicating that there is one arm in the core -- the `increment-100` arm. The tail of it is the entire Dojo subject, containing a bunch of other cores with 17, 34, 14, 54, etc. arms.
+It returns a cell, the head of which is summarized as `1.oks`, indicating that there is one arm in the core -- the `increment-100` arm. The tail of it is the entire Dojo subject, containing a bunch of other cores with 17, 34, 14, 54, etc. arms.
 
 ![](Images/060.png)
 
-If you have a lot of history in your Dojo subject and you enter the above code, it may take a long time to print everything out. If you run `:dojo|wipe` to clear the history and thenn run it, it will run quickly and return a fairly short output like above.
+If you have a lot of history in your Dojo subject and you enter the above code, it may take a long time to print everything out. If you run `:dojo|wipe` to clear the history and run it, it will run quickly and return a fairly short output like above.
 
 ## Modifying the Payload
 If we pin something to the head of the Dojo subject, and then build our core, then we can see that it shows up in the core's payload (the data branch). Recall that the `=+` (tislus) rune pins something to the head of the subject and then computes the rest of the Hoon expression using that subject.
@@ -163,11 +163,7 @@ Below see that `num2=@ud` appears right after `1.oks`
 >
 ```
 
-![](Images/080.png)
-
 Finally we can do the same thing by using the Dojo specific syntax to pin something to the head of the Dojo subject. Note that in this case `num3=3` persists in the subject for future expressions as opposed to the previous examples.
-
-![](Images/090.png)
 
 ```
 > =num3 3
@@ -175,8 +171,6 @@ Finally we can do the same thing by using the Dojo specific syntax to pin someth
   ++  increment-100  .+  100
   --
 ```
-
-In all cases we see the newly pinned element show up at the head of the core's payload.
 
 Let's recall the `=>` (tisgar) rune which takes two children and sets the first child as the subject to compute the second child. We will be making use of this rune quite a lot on this lesson. 
 
@@ -220,7 +214,7 @@ The following code means, build the core and set it as the subject, and grab the
 [4 1 100]
 ```
 
-Notice that what comes out isn't the computed result of `100+1`, `101`, but the raw uncomputed Nock formula.
+Notice that what comes out isn't the computed result of `100 + 1 = 101`, but the raw uncomputed Nock formula.
 
 ```
 [4 1 100]
@@ -232,7 +226,7 @@ To reduce, Nock 4 says to increment the result of the remaining computation. Noc
 
 ![](Images/130.png)
 
-We can also check by running the Nock code with the `.*` (dottar) rune. The first argument to `.*` is the subject and the second is the formula, since the subject doesn't matter we just give it a null input.
+We can also check by running the Nock code with the `.*` (dottar) rune. The first argument to `.*` is the subject and the second is the formula. Since the subject doesn't matter, we can just give it a null input.
 
 ```
 > .*  ~  [4 1 100]
@@ -317,7 +311,7 @@ Running it computes `5+1 = 6`
 6
 ```
 
-Of course, a different value for `n`, gives us different results from calling `increment-n`.
+Of course, a different value for `n` gives us different results from calling `increment-n`.
 
 ```
 > =>
@@ -333,7 +327,7 @@ Of course, a different value for `n`, gives us different results from calling `i
 As we mentioned before, the left branch of a core, with arms containing code, is called the **battery**. The right branch containing data is called the **payload**.
 
 ```
-[battery payload]
+   [battery payload]
          core
     /            \
 battery         payload
@@ -428,7 +422,7 @@ In particular, the new subject for the evaluation of `some-code` now has two cop
 
 ![](Images/193.png)
 
-Fortunately, memory management in Hoon and Nocks' implementation level (Arvo) prevents this from actually creating a physical duplicate and using twice the memory.
+Fortunately, memory management in Hoon and Nocks' implementation level (Vere) prevents this from actually creating a physical duplicate and using twice the memory. If this part isn't clear it's worth a re-read to understand it.
 
 
 ## Core Composition
@@ -601,7 +595,7 @@ Recall that `^` (ket) before a face skips the first match to that face and retur
 ## Cores in Arms
 There's another way to nest cores inside each other. You can put cores in the arms of other cores.
 
-In this case, if we directly call inner-arm, it will fail. Why is that? Recall from our previous discussion that arms of cores are stored as uncomputed Nock code. That means that `core-in-arm` isn't built yet, and inner arm doesn't exist, until we call it and build it.
+In this code, directly calling inner-arm fails. Why is that? Recall from our previous discussion that arms of cores are stored as uncomputed Nock code. That means that `core-in-arm` isn't built yet, and inner arm doesn't exist, until we call it and build it.
 
 ```
 > =>
@@ -624,7 +618,7 @@ However, if we compute `core-in-arm` and pull it into the subject, then `inner-a
 
 ![](Images/330.png)
 
-Everything substantial in Hoon is a core. If you can understand cores nested within cores, you can understand the structure of any Hoon program.
+Everything substantial in Hoon is a core. If you can understand cores nested within cores, you're on your way to understanding the structure of any Hoon program.
 
 
 ##  Modifying Parts of Cores
@@ -709,7 +703,7 @@ It doesn't matter if `=/  n  5` is inside or outside the `=/  gth-10`. These two
 
 What if we wanted to change the value of `n` before invoking the `gth-10` arm? To do that, we'll learn a new rune. 
 
-The `%=` (centis) rune first takes a wing of the subject (any address, but in this case our core `gth-10`). Then it takes an indefinite number of pairs. The first element of the pair is a subwing of the first argument, and the second is a new value for it. We close the rune with `--` because it has an indefinite number of children.
+The `%=` (centis) rune first takes a wing of the subject (any address, but in this case our core `gth-10`). Then it takes an indefinite number of pairs. The first element of the pair is a sub-wing of the first argument, and the second is a new value for it. We close the rune with `--` because it has an indefinite number of children.
 
 ![](Images/370.png)
 
@@ -769,34 +763,6 @@ Sugar syntax:
 ```
 
 This time, it returned `%.y` because `11` is greater than `10`.
-
-There is a neat trick where if the first argument to `%=` is the arm of a core, it immediately computes the arm after making changes to wings in the parent core of the arm. So we could have gotten rid of a `=>` with the following syntax:
-
-![](Images/410.png)
-
-```
-> =/  gth-10
-  =/  n  5
-  |%
-  ++  $  (gth n 10)
-  --
-  $.gth-10(n 11)
-
-%.y
-```
-
-If instead of using `=/` to pin the core to a face, we set the core as the subject, then the code becomes shorter. Now we can just grab the `$` arm directly.
-
-```
-> =>
-  =/  n  5
-  |%
-  ++  $  (gth n 10)
-  --
-  $(n 11)
-
-%.y
-```
 
 We are not limited to changing a single value at once with `%=`. This core has the pair `[a=1 b=2]` at the head of the payload, and then compares if `a` is greater than `b`
 
@@ -870,15 +836,16 @@ There is also a convenience rune called `=|` (tisbar) which pins the bunt of a t
 Going back to our door, we can use it just as we did with the core.
 
 ```
-=>
-|_  n=@ud
-++  $  (gth n 10)
---
-$
+> =>
+  |_  n=@ud
+  ++  $  (gth n 10)
+  --
+  $
+
+%.n
 ```
 
-which returns `%.n` since `n=0 < 10`.
-
+This returns `%.n` since `n=0` (the bunt) is less than `10`.
 
 We can also mutate the door with the `%=` rune, and recompute it.
 
@@ -901,8 +868,6 @@ It would be great if we could simplify the above code further. Fortunately, ther
 ![](Images/460.png)
 
 Using `%~` our code becomes,
-
-![](Images/460.png)
 
 Tall:
 ```
@@ -945,5 +910,5 @@ Sugar:
 ## Conclusion
 Over the course of this lesson, we have been inching slowly towards something that looks like a basic reusable function, that you can grab and recompute with a custom input. We will make this even clearer in next lesson.
 
-Great work getting to the end. This was a big lesson that covered the essential basics of cores and doors. Next lesson we will see how we can use these basics to develop any useful structure you might need, including reusable functions (called gates), recursive functions (called traps), and more.
+Good job getting through this lesson. This was a big lesson that covered the essential basics of cores and doors. Next lesson we will see how we can use these basics to develop any useful structure you might need, including reusable functions (called gates), recursive functions (called traps), and more.
 
