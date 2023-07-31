@@ -8,7 +8,6 @@ Key Points:
 - "We can modify cores with %= and run arms"
 - "Doors are cores with a bunt (default value) pinned to the head of the payload"
 - "We can modify and run an arm in a door with %~"
-
 Runes:
 - "`|%` (barcen)"
 - "`%=` (centis)"
