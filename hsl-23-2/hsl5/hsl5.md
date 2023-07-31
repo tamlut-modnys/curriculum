@@ -23,8 +23,10 @@ Links:
 #   Cores and Doors
 ##  Hoon School Lesson 5
 
+**Homework**: https://forms.gle/X6qbu65E6h8SfnFMA
+**Video**:  https://youtu.be/PdsQfplKmZw
 
-Today we are going to begin learning about the very important pattern called **cores**. Cores are the last remaining major concept in learning Hoon. Once you understand them, you are over the hump and on your way to having a good understanding of the whole language. Basically every working piece of Hoon code you will encounter, from big to small, is a core, so learning their fundamentals is important.
+We now begin learning about the very important pattern called **cores**. Cores are the last remaining major concept in learning Hoon. Once you understand them, you are over the hump and on your way to having a good understanding of the whole language. Basically every working piece of Hoon code you will encounter, from big to small, is a core, so understanding their fundamentals is important.
 
 ## Core Basics
 
