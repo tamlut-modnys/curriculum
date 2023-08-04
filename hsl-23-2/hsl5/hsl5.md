@@ -390,7 +390,7 @@ Arms in cores can also refer to each other.
 
 ## Some Shape Rotation
 
-Let's take a moment to make sure we understand what's going on. Whenever we use the `|%` (barcen) rune, we are storing a copy of the subject at the time the code was executed. We put that in the left branch, and we put some arms (code) in the right branch. We can think of a core as "wrapped around" the subject it was built against.
+Let's take a moment to make sure we understand what's going on. Whenever we use the `|%` (barcen) rune, we are storing a copy of the subject at the time the code was executed. We put that in the right branch, and we put some arms (code) in the leftß branch. We can think of a core as "wrapped around" the subject it was built against.
 
 ![](Images/191.png)
 
