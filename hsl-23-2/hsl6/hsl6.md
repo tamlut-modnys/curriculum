@@ -23,7 +23,7 @@ Links:
 #   Exploring the Power of Cores
 ##  Hoon School Lesson 6
 
-**Homework**: https://forms.gle/X6qbu65E6h8SfnFMA
+**Homework**: https://forms.gle/3y3v6h4hiH8tkiPQ8
 **Video**:  https://youtu.be/PdsQfplKmZw
 
 This is the second-to-last lesson of Hoon School, and the last one with big, important concepts. In this lesson we will continue to learn about cores and what we can do with them.
@@ -828,4 +828,4 @@ https://developers.urbit.org/guides/core/hoon-school/R-metals
 
 ## Conclusion
 
-We have shown that cores can evolve into gates, which serve like functions in Hoon, and traps, which are used for recursion. Once you understand cores, their usage and flexibility, you've gotten Hoon's biggest concept. Next week we will wrap up HSL with miscellaneous topics such as exploring the standard library and writing production code.
+We have shown that cores can evolve into gates, which serve like functions in Hoon, and traps, which are used for recursion. Once you understand cores, their usage and flexibility, you've gotten Hoon's biggest concept. Next week we will wrap up HSL with topics such as exploring the standard library and writing production code.
