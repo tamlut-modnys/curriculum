@@ -24,6 +24,7 @@ Links:
 ##  Hoon School Lesson 6
 
 **Homework**: https://forms.gle/3y3v6h4hiH8tkiPQ8
+
 **Video**:   https://youtu.be/LhO9WhFQWlk 
 
 This is the second-to-last lesson of Hoon School, and the last one with big, new, important concepts. In this lesson we will continue to learn about cores and what we can do with them.
@@ -819,6 +820,32 @@ We can also save it as a generator `add-numlist.hoon` in `zod/base/gen`, commit,
 ```
 > +add-numlist ~[1 2 3 4 5 6 7 8]
 36
+```
+
+## Tail recursion
+
+We could have written the above code in an even simpler way. We can get rid of `total` by putting the recursive call inside of a gate call.
+
+Can you figure out what's going on in the below code? Recall that
+
+```
+$(numlist t.numlist)
+```
+
+is sugar for
+
+```
+%=  $
+numlist  t.numlist
+==
+```
+
+```
+|=  numlist=(list @ud)
+^-  @ud 
+?~  numlist
+  0
+(add i.numlist $(numlist t.numlist))
 ```
 
 ##  Polymorphic Cores (Optional Further Reading)
