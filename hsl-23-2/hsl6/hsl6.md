@@ -25,7 +25,7 @@ Links:
 
 **Homework**: https://forms.gle/3y3v6h4hiH8tkiPQ8
 
-**Video**:   https://youtu.be/LhO9WhFQWlk 
+**Video**: https://youtu.be/LhO9WhFQWlk 
 
 This is the second-to-last lesson of Hoon School, and the last one with big, new, important concepts. In this lesson we will continue to learn about cores and what we can do with them.
 
