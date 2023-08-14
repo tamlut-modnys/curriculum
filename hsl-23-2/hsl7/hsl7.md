@@ -34,6 +34,10 @@ Links:
 # Exploring the Standard Library and Building Production Code
 ##  Hoon School Lesson 7
 
+**Homework:** https://forms.gle/nGLq7ZX6wbkKy2Ue8
+
+**Video:** https://www.youtube.com/watch?v=cXTzcg08Z40
+
 Our final lesson of Hoon School Live. We will dig into data structures and a few more features of the language. We will wrap up with a discussion of `%say` generators, writing and testing production-ready code, and understanding the Urbit system.
 
 ## A Few Important Data Structures
