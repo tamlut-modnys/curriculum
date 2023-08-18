@@ -34,9 +34,9 @@ Links:
 # Exploring the Standard Library and Building Production Code
 ##  Hoon School Lesson 7
 
-**Homework:** https://forms.gle/nGLq7ZX6wbkKy2Ue8
+**Homework:** https://forms.gle/Bvj7gzfACRLi3u84A
 
-**Video:** https://www.youtube.com/watch?v=cXTzcg08Z40
+**Video:** https://youtu.be/cXTzcg08Z40
 
 Our final lesson of Hoon School Live. We will dig into data structures and a few more features of the language. We will wrap up with a discussion of `%say` generators, writing and testing production-ready code, and understanding the Urbit system.
 
@@ -976,11 +976,11 @@ Let's dig into the parts of this code to understand it.
 Once you've saved and commited the code, you can run the tests with the following commands.
 
 ```
--test %/tests/primes/hoon
+-test %/tests/primes
 ```
 OR
 ```
--test /===/tests/primes/hoon
+-test /===/tests/primes
 ```
 
 In this case `%` or `/===` at the front of the path stands in for the beak, which is a triple of `[ship desk case]` that basically tells the Dojo where you are in the file system.
