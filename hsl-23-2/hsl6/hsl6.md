@@ -822,7 +822,7 @@ We can also save it as a generator `add-numlist.hoon` in `zod/base/gen`, commit,
 36
 ```
 
-## Tail recursion
+## Natural recursion
 
 We could have written the above code in an even simpler way. We can get rid of `total` by putting the recursive call inside of a gate call.
 
