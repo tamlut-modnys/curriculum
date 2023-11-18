@@ -17,7 +17,7 @@ Key Points:
 
 **Homework**: https://forms.gle/u7WqAMPdeWVjSkuq5
 
-**Video**: 
+**Video**: https://youtu.be/7xRF-m5FAVo
 
 ## Administrative
 We have a syllabus at the following link. Please check it for anything administrative you may need to know, or for a list of useful resources.
@@ -52,7 +52,7 @@ The problem is that ordinary language is slippery -- most of the speech we use d
 ![](Images/06.jpeg)
 
 A famous story goes, Plato used to refer to a man as a "featherless biped", and one day Diogenes brought in a plucked chicken and said "behold! a man".
-![](Images/06.jpg)
+![](Images/07.jpg)
 
 Is there something that we can start with as a foundation to represent knowledge? What is the basis of knowledge? The simplest possible thing we can do -- perhaps the foundation of knowledge itself -- is to make a distinction. Either it is true that I have red hair, or it is false. Either it's true that I ate an apple today, or I did not. Yes/no, night/day, black/white, hot/cold, etc.
 
@@ -70,18 +70,17 @@ According to this encoding, we represent the number three by the binary sequence
 Is that a particularly good or efficient encoding? Probably not. But it is certainly unambiguous and therefore valid.
 
 
-The standard way that we represent numbers using bits is called **binary representation**.
-
-![](Images/30.png)
-
-How does binary work? It's pretty similar to the decimal notation we are familiar with. The rightmost entry represents the 1's place -- a 0 means there is no 1, a 1 means there is a 1. Going left one hop, we get to the 2s place -- a 0 means there is no 1, a 1 means there is a 2. Going left again, we get to the 4s place -- a 0 means there is no 4, and so on. We add all these up to get our number.
+The standard way that we represent numbers using bits is called **binary representation**. How does it work? It's pretty similar to the decimal notation we are familiar with. The rightmost entry represents the 1's place -- a 0 means there is no 1, a 1 means there is a 1. Going left one hop, we get to the 2s place -- a 0 means there is no 1, a 1 means there is a 2. Going left again, we get to the 4s place -- a 0 means there is no 4, and so on. We add all these up to get our number.
 
 ![](Images/35.png)
 
 
 What information does this sequence of bits represent? By what we just learned, we might be convinced that it represents the number 427,603.
 
-![](Images/41.png)
+
+```
+01101000011001010011
+```
 
 However, not so fast. We didn't specify that we wanted to interpret the bits as a binary number. What if we use a different decoding scheme? Now it means the word MARS
 
@@ -172,7 +171,7 @@ However, we must be careful to not go too far.
 
 is not a theorem of the system, even though it's true that `1+1+1=3`. It's impossible to produce a string with two `P`s. So we must not take an interpretation farther than the underlying computation allows us.
 
-Let me show you one more formal system. Its theorems look like binary trees of numbers and the words `add` `sub` `mul` and `div`. In particular, here are how the axioms are defined:
+Let's look at one more formal system. Its theorems look like binary trees of numbers and the words `add` `sub` `mul` and `div`. In particular, here are how the axioms are defined:
 
 ![](Images/60.png)
 
@@ -394,13 +393,13 @@ function(n):
   else:
     return function(n-1)
 ```
-For an input of 0, it takes the first branch of the `if` and takes 1 function call to return. 
+For an input of `0`, it takes the first branch of the `if` and takes 1 function call to return. 
 
-For an input of 1, it skips to the `else` and calls `function(1-1) = function(0)`, which itself takes 1 call and returns `0`. So it takes 2 calls to return.
+For an input of `1`, it skips to the `else` and calls `function(1-1) = function(0)`, which itself takes 1 call and returns `0`. So it takes 2 calls to return.
 
-For an input of 2, it skips to the `else` and calls `function(1)`. We just figured out that `function(1)` takes 2 calls to return, so an input of 2 takes `2+1=3` calls to return.
+For an input of `2`, it skips to the `else` and calls `function(1)`. We just figured out that `function(1)` takes 2 calls to return, so an input of 2 takes `2+1=3` calls to return.
 
-In general we can say this takes `n+1` function calls to return on an input of `n`. In computer science, we can say this function computes in `O(n)` time. For an input of size n, it takes a time to finish that scales up by a factor of n. (Note that recursing n times doesn't always mean a function takes O(n) time to compute -- it may take longer depending on the operations in the recursion).
+In general we can say this takes `n+1` function calls to return on an input of `n`. In computer science, we can say this function computes in `O(n)` time. For an input of size `n`, it takes a time to finish that scales up by a factor of `n`. (Note that recursing `n` times doesn't always mean a function takes `O(n)` time to compute -- it may take longer depending on the operations in the recursion).
 
 Let's consider this new function. It's a bit trickier.
 
@@ -412,7 +411,7 @@ function(n):
     return (function(n - 1 ) + function(n-1))
 ```
 
- First, what does it do? Let's try `function(0)` first. It triggers the first `if` and returns 0. Now let's try `function(1)` It skips the `if` and goes to the `else`, returning 
+ First, let's figure out what it does before studying the time complexity. Let's try `function(0)` first. It triggers the first `if` and returns 0. Now let's try `function(1)` It skips the `if` and goes to the `else`, returning 
  ```
  (function(1 - 1) + function(1 - 1)) = (function(0) + function(0))
  ```
