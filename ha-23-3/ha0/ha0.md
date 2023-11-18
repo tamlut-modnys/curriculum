@@ -13,7 +13,7 @@ Key Points:
 ---
 
 #   Introduction to Computing and Development
-##  Hoon School Lesson 0
+##  Hoon Academy Lesson 0
 
 **Homework**: https://forms.gle/u7WqAMPdeWVjSkuq5
 
