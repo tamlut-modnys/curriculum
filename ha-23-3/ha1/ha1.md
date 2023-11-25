@@ -789,6 +789,8 @@ Hoon's type system has many more auras than what we can cover here. You can find
 ## Running Nock
 We will learn one final rune that will help you as you're learning Nock (wasn't in the live lecture due to time constraints). `.*` (dottar) takes a Nock subject and formula, and computes the result.
 
+![](Images/390.png)
+
 ```
 > .*  [8 9]  [0 1]
 [8 9]
