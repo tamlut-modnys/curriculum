@@ -409,78 +409,6 @@ However, we can access all the matches with this notation:
 4
 ```
 
-## Computation in Urbit
-We have just given a brief overview of the way that data is stored in your Urbit. However, we have said nothing about how the computer actually computes. 
-
-Let's recall the functions on a binary tree that we introduced in last lesson. Recall that any functional procedure consists of two parts: the data input, and the computational instructions on what to do with the data.
-
-In this image, can you identify which part is the data input, and which part is the computational instructions?
-
-![](Images/110.png)
-
-The data input is the binary tree
-```
-   /  \
- /  \  2
-17  8
-```
-
-While the instructions are to increment the result of taking the right subtree of the input. We could have also rewrote it like this:
-
-![](Images/120.png)
-
-This shows the steps we take to reduce this pair of data and computation to a result.
-
-![](Images/130.png)
-
-Another example to get comfortable with it:
-
-![](Images/140.png)
-
-Now, let's just rename things. Let's call the data input the **subject** and the computation the **formula**. 
-
-![](Images/150.png)
-
-We are getting close to something like **Nock**, the formal system and machine code that underlies Urbit.
-
-## Nock
-A Nock computation consists of two parts. The **subject** is the data input, and the **formula** is the computational instructions. Both the subject and the formula are binary trees of natural numbers.
-
-The formula contains unambiguous instructions on how to transform the subject and return a result. It's just like what we saw above, except the instructions are encoded as numbers in a tree.
-
-Let's go through some concrete examples. 
-
-**Nock 0** is a code that says "take the number immediately after the 0, and return what's at that address in the subject". Here, our subject is our binary tree `[[[8 9] [10 11]] [[12 13] [14 15]]]` that we worked with earlier. Interpreting the formula `[0 2]` we grab the subtree of that tree under address 2, returning `[[8 9] [10 11]]`. (If you forget why address 2 is that subtree, feel free to scroll up and look at the tree numbering again).
-
-![](Images/160.png)
-
-We can also interpret the formula in plain English:
-
-![](Images/170.png)
-
-Nock operations can also be chained together. Consider the following plain English formula and reduction:
-
-![](Images/190.png)
-
-**Nock 4** is a code that says "compute the formula after the 4 on the subject, and then increment the result by 1". Here, we first pull out the Nock 4 to get `[50 [8 9]] [0 2]`. Then, recalling the Nock 0 rule, we pull out the data in the subject at address 2, which is the atom `50`. Finally, we increment `50` to get `51`.
-
-![](Images/200.png)
-
-**Nock 3** works similarly to Nock 4, except it returns a `0` if the result of the computation is a cell, and `1` if it's an atom.
-
-![](Images/210.png)
-
-A **Nock 5** is followed by two formulas. It says: compute both of these formulas on the subject. Then return 0 if the results are equal, and 1 if not.
-![](Images/220.png)
-
-The point of this section is not to fully and completely understand Nock. However, we want to get the flavor of it. Nock is a simple, mechanical formal system based on binary trees that underlies all of Urbit. Hoon compiles to Nock and is close to it structurally. By getting a feel for Nock, we can get a feel for why Urbit and Hoon are the way they are.
-
-_Some computer science nerd bait -- the Nock rules 0-5 are enough to make it Turing-complete. There are 12 rules total -- the rest are just for ease of annotation and can be reduced to combinations of rules 0-5._
-
-If you're interested, I would highly recommend this clear and simple Nock guide written by ~timluc-miptev: https://blog.timlucmiptev.space/part1.html
-
-The official Nock documentation is here: https://docs.urbit.org/language/nock
-
 ## Hoon
 
 Let's begin our dive into the Hoon language.
@@ -578,6 +506,78 @@ How about this one?
 :-  1  :-  2
 ```
 In this case the inner `:-` is missing a child.
+
+## Computation in Urbit
+We have just given a brief overview of the way that data is stored in your Urbit. However, we have said nothing about how the computer actually computes. 
+
+Let's recall the functions on a binary tree that we introduced in last lesson. Recall that any functional procedure consists of two parts: the data input, and the computational instructions on what to do with the data.
+
+In this image, can you identify which part is the data input, and which part is the computational instructions?
+
+![](Images/110.png)
+
+The data input is the binary tree
+```
+   /  \
+ /  \  2
+17  8
+```
+
+While the instructions are to increment the result of taking the right subtree of the input. We could have also rewrote it like this:
+
+![](Images/120.png)
+
+This shows the steps we take to reduce this pair of data and computation to a result.
+
+![](Images/130.png)
+
+Another example to get comfortable with it:
+
+![](Images/140.png)
+
+Now, let's just rename things. Let's call the data input the **subject** and the computation the **formula**. 
+
+![](Images/150.png)
+
+We are getting close to something like **Nock**, the formal system and machine code that underlies Urbit.
+
+## Nock
+A Nock computation consists of two parts. The **subject** is the data input, and the **formula** is the computational instructions. Both the subject and the formula are binary trees of natural numbers.
+
+The formula contains unambiguous instructions on how to transform the subject and return a result. It's just like what we saw above, except the instructions are encoded as numbers in a tree.
+
+Let's go through some concrete examples. 
+
+**Nock 0** is a code that says "take the number immediately after the 0, and return what's at that address in the subject". Here, our subject is our binary tree `[[[8 9] [10 11]] [[12 13] [14 15]]]` that we worked with earlier. Interpreting the formula `[0 2]` we grab the subtree of that tree under address 2, returning `[[8 9] [10 11]]`. (If you forget why address 2 is that subtree, feel free to scroll up and look at the tree numbering again).
+
+![](Images/160.png)
+
+We can also interpret the formula in plain English:
+
+![](Images/170.png)
+
+Nock operations can also be chained together. Consider the following plain English formula and reduction:
+
+![](Images/190.png)
+
+**Nock 4** is a code that says "compute the formula after the 4 on the subject, and then increment the result by 1". Here, we first pull out the Nock 4 to get `[50 [8 9]] [0 2]`. Then, recalling the Nock 0 rule, we pull out the data in the subject at address 2, which is the atom `50`. Finally, we increment `50` to get `51`.
+
+![](Images/200.png)
+
+**Nock 3** works similarly to Nock 4, except it returns a `0` if the result of the computation is a cell, and `1` if it's an atom.
+
+![](Images/210.png)
+
+A **Nock 5** is followed by two formulas. It says: compute both of these formulas on the subject. Then return 0 if the results are equal, and 1 if not.
+![](Images/220.png)
+
+The point of this section is not to fully and completely understand Nock. However, we want to get the flavor of it. Nock is a simple, mechanical formal system based on binary trees that underlies all of Urbit. Hoon compiles to Nock and is close to it structurally. By getting a feel for Nock, we can get a feel for why Urbit and Hoon are the way they are.
+
+_Some computer science nerd bait -- the Nock rules 0-5 are enough to make it Turing-complete. There are 12 rules total -- the rest are just for ease of annotation and can be reduced to combinations of rules 0-5._
+
+If you're interested, I would highly recommend this clear and simple Nock guide written by ~timluc-miptev: https://blog.timlucmiptev.space/part1.html
+
+The official Nock documentation is here: https://docs.urbit.org/language/nock
 
 ## Nocking in Hoon
 Let's learn a few more runes that allow us to do Nock-like operations.
