@@ -23,7 +23,7 @@ Links:
 - Simple Nock introduction: "https://blog.timlucmiptev.space/part1.html"
 - Official Nock documentation: "https://docs.urbit.org/language/nock"
 - Hoon syntax: "https://docs.urbit.org/courses/hoon-school/B-syntax"
-- Rune pronounciations: "https://developers.urbit.org/guides/core/hoon-school/A-intro"
+- Rune pronounciations: "https://developers.urbit.org/guides/core/hoon-school/A-intro#pronouncing-hoon"
 - Aura reference: "https://docs.urbit.org/language/hoon/reference/auras"
 ---
 
