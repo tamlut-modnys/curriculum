@@ -182,7 +182,7 @@ Here is a summary of all the `=` (tis) runes we have learned so far:
 [fod=3 bat=[baz=1 moo=2]]
 ```
 
-A **wing** is a search path in the subject consisting of one or more limbs strung together. In this case, a limb would be `fod`, `bat`, `baz.bat`, `moo.bat`, `-` `+` `-.+` `+.+`.
+A **wing** is a search path in the subject consisting of one or more limbs strung together. In this case, a wing would be `fod`, `bat`, `baz.bat`, `moo.bat`, `-` `+` `-.+` `+.+`.
 
 ```
 > =a [fod=3 bat=[baz=1 moo=2]]
@@ -610,6 +610,7 @@ Changing from `%-` to `%+` underneath, we can simplify it once more, to yield ou
 ```
 =/  x  (add 1 1)  =/  y  (div 10 2)  (pow x y)
 ```
+
 
 ## More Auras
 
