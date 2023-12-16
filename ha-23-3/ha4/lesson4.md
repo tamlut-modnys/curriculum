@@ -31,7 +31,7 @@ Links:
 
 ## Administrative
 
-This is our last course before break and the official halfway point of Hoon Academy -- congratulations on making it here. Our next class will be Saturday, January 6. Office hours will be held this Monday, December 18 at 5pm ET, according to schedule, but the next office hours will be Friday, January 5.
+This is our last course before break and the official halfway point of Hoon Academy — congratulations on making it here. Our next class will be Saturday, January 6. Office hours will be held this Monday, December 18 at 5pm ET, according to schedule, but the next office hours will be Friday, January 5.
 
 I will be online and responding to messages throughout this time. Definitely reach out if you have homework or general questions. The break is a great opportunity to catch up with the course and make sure we're on the same page going into Lesson 5.
 
