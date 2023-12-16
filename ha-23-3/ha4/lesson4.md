@@ -200,7 +200,7 @@ We can even make lists of other lists. Here we create and cast a list of lists o
 ^-  %-  list  %-  list  @t  [['a' 'b' 'c' ~] ['d' 'e' 'f' ~] ['x' 'y' 'z' ~] ~]
 ```
 
-Using sugar syntax for `%-` so it's easier to read,
+Using sugar syntax for `%-` (cenhep) so it's easier to read,
 
 ```
 ^-  (list (list @t))  [['a' 'b' 'c' ~] ['d' 'e' 'f' ~] ['x' 'y' 'z' ~] ~]
@@ -325,13 +325,12 @@ The `!!` rune we haven't learned yet simply crashes the program.
 dojo: hoon expression failed
 ```
 
-Going back to our code, we can interpret the second line as saying "if `a` is null, then crash". 
-
+Now we can interpret the code:
 ![](Images/095.png)
 
-This means that if we are in the third child of the `?~`, where we compute `i.a` the Hoon compiler knows that `a` must not be null -- it knows its a `lest` rather than a `list` -- and we can use these faces.
-
 ![](Images/096.png)
+
+Running the code,
 
 ```
 > =/  a   ^-  (list @ud)  [1 2 3 4 5 ~]
@@ -358,9 +357,9 @@ find-fork
 
 Hoon comes with a very comprehensive library of gates to manipulate and make use of lists. Lists are a great way to represent data because they give you access to these utilities.
 
-Here is a link you can use to reference all the list library gates: https://docs.urbit.org/language/hoon/reference/stdlib/2b 
+[Here is a link you can use to reference all the list library gates.](https://docs.urbit.org/language/hoon/reference/stdlib/2b)
 
-Let's go through some examples. A bit of inconsistency in the library -- some of the gates take a null-terminated tuple and automatically cast it to a list. Others require you to cast it before passing.
+We note there's a bit of inconsistency in the library -- some of the gates take a null-terminated tuple and automatically cast it to a list. Others require you to cast it before passing.
 
 Let's go through some examples.
 
@@ -464,7 +463,7 @@ The gate you use as input to `turn` doesn't have to be predefined -- you can wri
 
 `skim` takes a list and a gate. That gate should take one argument and return either `%.y` or `%.n`. `skim` returns a list of only the elements that made the gate return `%.y`. It's the equivalent of `filter` in other languages.
 
-Here we `skim` with a custom gate `iseven` which returns `%.y` if a number is even and `%.n` otherwise.
+Here we `skim` with a custom gate `is-even` which returns `%.y` if a number is even and `%.n` otherwise.
 
 ```
 > =/  is-even  |=(a=@ud =((mod a 2) 0))
@@ -480,7 +479,7 @@ Let's get into our last major topic for this lesson, Hoon's text system. So far 
 
 ![](Images/100.png)
 
-There's only one we haven't learned, which is the `@ta` knot. If you'll recall nesting properties for auras, this means `@tas` nests within `@ta` which nests within `@t`.
+There's only one we haven't learned, which is the `@ta` knot -- we won't use it much in the course. If you'll recall nesting properties for auras, `@tas` nests within `@ta` which nests within `@t`.
 
 If you want to check whether some text is valid as a certain aura, you can use the library gate `sane`. `sane` is a gate that builds a gate.
 
@@ -492,7 +491,7 @@ It takes as input an aura formatted as a `@tas` (like `%p` or `%ta` instead of `
 
 ```
 > %-  %-  sane  %ta  'ångström'
-
+%.n
 ```
 
 Sugared,
@@ -557,7 +556,9 @@ dojo: hoon expression failed
 ## Tapes
 Besides `@t` `@ta` and `@tas`, which all represent text as atoms, there is one more possible representation of text in Hoon. You can represent text as a list, which is powerful because it gives you access to all the list utilities we learned, while working on text.
 
-In particular a **tape** is a list `@tD`. The aura `@tD`, means it's data of type `@t`, but limited to 8 bits (which is what the ending `D` represents, and it does need to be capital). So a tape is a list of `@t` data each limited to 8 bit chunks. 
+In particular a **tape** is a list `@tD`. The aura `@tD`, means it's data of type `@t`, but limited to 8 bits (which is what the ending `D` represents, and the `D` does need to be capital). So a tape is a list of `@t` data each limited to 8 bit chunks. 
+
+Here is a representation of how the text "I am the..." might be stored in a tape. The numbers represent the tree addresses.
 
 ![](Images/140.png)
 
@@ -603,7 +604,7 @@ Tapes are easier to work with than cords, but use about 6x as much storage due t
 
 ### Working with Tapes
 
-Tapes have many useful library utilities, which you can reference fully here: https://docs.urbit.org/language/hoon/reference/stdlib/4b 
+Tapes have many useful library utilities, which you can [reference fully here.](https://docs.urbit.org/language/hoon/reference/stdlib/4b)
 
 You can convert an atom of any aura to a tape with `scow`:
 
@@ -721,4 +722,4 @@ Finally, you can combine both the angle bracket and curly bracket notations. Her
 
 These text tools are very useful when working with userspace apps.
 
-For additional reading on Hoon's text system, this link goes over the same topics in a bit more detail: https://docs.urbit.org/language/hoon/guides/strings 
+For additional reading on Hoon's text system, [this link goes over the same topics in a bit more detail.](https://docs.urbit.org/language/hoon/guides/strings)
