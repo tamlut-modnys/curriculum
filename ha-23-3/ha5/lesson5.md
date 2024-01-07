@@ -18,10 +18,11 @@ Links:
 - Cen runes: "https://docs.urbit.org/language/hoon/reference/rune/cen"
 ---
 
-#   Cores and Doors
-##  Hoon School Lesson 5
+#   Cores
+##  Hoon Academy Lesson 5
 
 **Homework**: https://forms.gle/2asUR9qMt3fDcYVa8
+
 **Video**: https://youtu.be/gmqAz1ej6W8 
 
 We now begin learning about the very important pattern called **cores**. Cores are the last remaining major concept in learning Hoon. Once you understand them, you on your way to having a good understanding of the whole language. Basically every working piece of Hoon code you will encounter, from big to small, is a core.
@@ -67,7 +68,8 @@ Before proceeding, let's recall the rune `=>` (tisgar) which we will use heavily
 Let's also recall `=<` (tisgal) which is exactly the same, with arguments reversed.
 
 Our first new rune, and the star of the show is the rune `|%` (barcen). `|%` is the general rune to declare a core. It takes pairs of arguments, which are faces of arms and definitions for them. Each arm is preceded by a `++` (luslus), and the whole expression is closed by `--` (hephep).
-04
+
+
 ![](Images/045.png)
 
 ## First Core Example
@@ -473,7 +475,7 @@ So if we then set the core as the subject to run some code, then the previous su
 If we use `=/` to make a core, name it, and pin it to the head of a subject, something different happens.
 
 
-![](Images/216.png)
+![](Images/217.png)
 
 In particular, the new subject now has two copies of the old subject in it, one stored in the core that's pinned to the head of the new subject, and one in the tail of the new subject.
 
@@ -514,7 +516,7 @@ The data structure produced by the code looks like:
 
 ## Scoping
 
-With nested cores, we should scoping. When arms are called, they run against their parent core as the subject. 
+With nested cores, we should understand scoping. When arms are called, they run against their parent core as the subject. 
 
 In the code below, note that calling `inner-core-arm` gets the definition of `n` as `2` rather than `1`.
 
@@ -697,7 +699,7 @@ However computing `core-in-arm` builds the core and makes `inner-arm` available.
 
 To summarize, we have shown two ways that cores can be nested in each other: in the payload (data branch) or in the battery (code branch).
 
-Since everything substantial in Hoon is a core, understanding cores nested within cores gets you far towards being able to read and understand arbitrary Hoon programs.
+Since everything substantial in Hoon is a core, understanding how cores can nest within cores gets you towards being able to understand the structure of any Hoon program.
 
 ##  Cores as Reusable Functions
 
@@ -917,4 +919,4 @@ Sugar syntax:
 We created something that resembles a basic function that allows you to substitute an input to calculate an output.
 
 ## Conclusion
-We introduced cores as a major concept and comprehensively studied their mechanics. We saw how to use cores to create function-like behavior. In next lesson, we'll demonstrate the power and flexibility of cores by studying their wide applications throughout Hoon.
+This was a big and important lesson, congrats on making it here. We introduced cores as a major concept and comprehensively studied their mechanics. We used cores to create basic function-like behavior. In next lesson, we'll demonstrate the power and flexibility of cores by studying their wide applications throughout Hoon.
