@@ -67,7 +67,7 @@ And we learned how to get the default value of an aura with `^*` (kettar) and it
 .0
 
 > *@rs
-0
+.0
 ```
 
 This is all great, but so far we have just been dealing with single values. For general computing, you would need types for more complicated structures: cells, tuples, lists, sets, maps, and so on.
@@ -214,7 +214,7 @@ Then it checks the second position in the mold, which we specified as `@rs`, and
 
 ![](Images/070.png)
 
-Having passed all the checks, it returns the cell with with faces attached to it.
+Having passed all the checks, it returns the cell with faces attached to it.
 
 
 How about an example where it doesn't work? If we try the following, it will throw an error, because `@t` (the inferred type of `'hello'`) doesn't nest under `@p`. In this case, the `nest-fail` error is perfectly descriptive -- we have a `@t` and need a `@p`.
