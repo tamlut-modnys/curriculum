@@ -46,7 +46,7 @@ Let's open up our Urbit fakeship's Dojo and run `|mount %base` (if we haven't) s
 * `ted` -- Threads, which are transient computations. We can learn more about these later.
 * `sys` -- Fundamental system logic for your Urbit computer.
 
-Of these folders, `sys` is the most essential for the basic functioning of the computer. Inside it, we see 4 files:
+Of these folders, `sys` is the most essential for the computer's functiobality. Inside it, we see 4 files:
 
 * `hoon.hoon` -- Language, compiler, standard library (including arithmetic, list library, etc.)
 * `arvo.hoon` -- The fundamental event processing machinery of the OS, plus some basic type definitions.
@@ -74,22 +74,35 @@ your-dojo-expression
 
 Inside the `vane` folder are vanes, which are like kernel modules, or discrete parts of the operating system that handle different jobs. For example, `gall` handles apps, `clay` handles file systems, `dill` handles the terminal, and `behn` handles timers.
 
-Vanes are plug-and-play to Arvo, the core OS machinery. For example, the vane `khan` was recently added to the system, which handles Urbit's communication to external hardware devices.
+Vanes are plug-and-play to Arvo, the core OS machinery. For example, the vane `khan`, which handles Urbit's communication to external hardware devices, was recently added to the system.
 
 
 ## A Stroll Through hoon.hoon
 
-As mentioned, `hoon.hoon` contains the language, compiler, and standard library. It is basically the backbone of the system. The rest of this lesson involves looking through it and pointing out interesting parts.
+As mentioned, `hoon.hoon` contains the language, compiler, and standard library. It is essentially the backbone of the system. The rest of this lesson is a look through this large file.
 
 The `hoon.hoon` core is organized into chapters by the `+|` (lusbar) rune, which does nothing structurally and is purely for organization. As a guide for our explorations, we may reference the [official documentation for the standard library](https://docs.urbit.org/language/hoon/reference/stdlib), which basically documents this file.
 
-[Chapter 1a](https://docs.urbit.org/language/hoon/reference/stdlib/1a) contains the basic atom arithmetic we've been using, such as `add` `sub` `div` `mul` `gth` `lte`, and others.
+[Chapter 1a](https://docs.urbit.org/language/hoon/reference/stdlib/1a) contains the basic atom arithmetic we've been using, such as `add` `sub` `div` `mul` `gth` `lte`, and more.
 
 [Chapter 1b](https://docs.urbit.org/language/hoon/reference/stdlib/1b) contains utilities to find addresses in trees. For example, `peg` takes two atoms `[a b]` and returns the address of `+b.+a`
 
-For example `(peg 3 4)` returns `12` because `+4.+3` is the same address in a tree as `+12`.
+To illustrate `(peg 3 4)` returns `12` because `+4.+3` is the same address in a tree as `+12`.
 
-![](Images/015.png)
+```
+                 1
+              /     \
+             /       \
+            /         \
+           2           3       <- here is the subtree `+3`
+          / \         / \
+         /   \       /   \
+        4     5     6     7
+       / \   / \   / \   / \
+      8  9  10 11 12 13 14  15
+     /\  /\ /\ /\ /\ /\ /\  /\
+         (continues...)
+```
 
 ### Units
 
@@ -102,7 +115,7 @@ In Hoon the character `~` corresponds to the underlying value `0` -- not a null 
 0
 ```
 
-Suppose that we are creating a database for our bank app in Hoon. We link `@p` to dollar amounts in `@ud`.
+Suppose that we are creating a database for a bank app in Hoon. We link `@p` to dollar amounts in `@ud`.
 
 ```
 Key (@p)    Value(@ud dollars)
@@ -154,7 +167,7 @@ This also passes:
 [~ ~sampel-palnet]
 ```
 
-But this one fails:
+But this one fails, because `~sampel-palnet` by itself is not a unit.
 ```
 > ^-  (unit @p)  ~sampel-palnet
 mint-nice
@@ -162,7 +175,7 @@ mint-nice
 -have.@p
 ```
 
-### Unit Utilities
+### Unit Library
 
 The library gate `some` takes a value and wraps it in a unit.
 
@@ -194,7 +207,7 @@ There is a sugar syntax to put a value in a unit shaped structure --  a single t
 
 However, recall how a null-terminated tuple like `[1 2 3 ~]` is shaped like a list but not necessarily known to the compiler to be a list. The same goes for units and and unit-shaped structures like `[~ 2]`.
 
-There are many utilities for working with units, but we will cover just one more. Suppose you want to apply a gate to a value in a unit, but you don't want to unwrap the unit and wrap the output. `bind` takes care of that for you.
+There are many utilities for working with units, but we will cover just one more. Suppose we want to apply a gate to a value in a unit, but we don't want to unwrap the unit and wrap the output. `bind` takes care of that.
 
 ![](Images/040.png)
 
@@ -224,7 +237,7 @@ Chapters [2c](https://docs.urbit.org/language/hoon/reference/stdlib/2c) and [2d]
 
 [Chapter 2h](https://docs.urbit.org/language/hoon/reference/stdlib/2h) is Set Logic. What are sets?
 
-Suppose you're throwing a big party and want to keep track of who to invite. As it approaches, you keep adjusting, adding and removing people. If you used a list to keep track of this data, you might accidentally add "Alice" twice, which may result in sending her two invitations. We'd like to have a data structure that stores each unique piece of data once, and only once.
+Suppose we're throwing a big party and want to keep track of who to invite. As it approaches, we adjust, adding and removing people. If we use a list to keep track of this data, we might accidentally add "Alice" twice, which may result in sending her two invitations. We'd like to have a data structure that stores each unique piece of data once, and only once.
 
 A **set** is an unordered grouping of data in which each entry is unique -- they can only appear once. Compare this to lists which are ordered, and allow duplicates.
 
@@ -247,7 +260,7 @@ We can create an instance of a set from a null-terminated tuple using the librar
 
 Notice how the input tuple had `"Alice"` twice but she only appeared once in the set.
 
-If we don't cast the output to a `(set tape)`, then we get the raw data structure underneath the set, which is less nicely formatted. The `n` `l` `r` faces refer to the underlying `tree` data structure that implements the set.
+If we don't cast the output to a `(set tape)`, then we get the raw data structure underneath the set, which is less nicely formatted. The `n` `l` `r` faces refer to the underlying `tree` data structure that implements the set. Don't worry about it for now.
 
 ```
 > (sy ["Alice" "Bob" "Charlie" "Alice" "Dave" ~])
@@ -276,7 +289,7 @@ Here is the code:
 --
 ```
 
-Here is the explanation of the code:
+Here is the explanation:
 
 ![](Images/100.png)
 ![](Images/110.png)
@@ -380,7 +393,7 @@ We can apply a gate to every element of the set with `run`.
 
 ![](Images/200.png)
 
-Here we apply `cuss` to capitalize every tape in the set. Maybe our party invitations are very loud!
+Here we apply `cuss` to capitalize every tape in the set. Maybe our party invitations are very loud.
 
 ```
 > =/  party  (sy ["Alice" "Bob" "Charlie" "Alice" "Dave" ~])
@@ -468,7 +481,7 @@ If we pass in a key that doesn't exist, the map is returned unchanged.
 [n=[p='green' q=0x1.a638] l=[n=[p='blue' q=0x66ff] l=[n=[p='red' q=0xed.0a3f] l=~ r=~] r=~] r=~]
 ```
 
-We can look up the value associated with a key using the `get` arm. `get` returns a `unit`. If the key didn't exist, it returns the empty unit, otherwise it returns the value wrapped in a unit. This is precisely the situation we learned that makes units useful.
+We can look up the value associated with a key using the `get` arm. `get` returns a `unit`. If the key didn't exist, it returns the empty unit, otherwise it returns the value wrapped in a unit. This is precisely the situation, which we covered earlier, that makes units useful.
 
 ![](Images/260.png)
 
@@ -547,7 +560,7 @@ For example, suppose we want to make a gate that reverses a tape and converts it
 
 We will cover one more useful functional trick, which is not from the standard library, but is actually a rune.
 
-Have you ever wanted to run a gate that takes 2 arguments on an unlimited number of arguments? `;:` (miccol) makes this possible.
+`;:` (miccol) makes it possible to run a gate that takes 2 arguments on an unlimited number of arguments.
 
 ![](Images/345.png)
 
@@ -564,7 +577,7 @@ In sugar form:
 :(mul 1 2 3 4 5 6)
 ```
 
-Another example:
+Another example with `weld`:
 ```
 > :(weld "Never " "gonna " "give " "you " "up")
 "Never gonna give you up"
@@ -578,13 +591,13 @@ Floating point numbers are how computers usually represent numbers that aren't n
 
 Hoon has several different representations of floating point, along with associated libraries. 
 
-The `fn`, `dn`, `rn` molds represent a floating point broken into several different pieces of information, such as the sign, the decimal exponent, and the number. If you've ever seen a calculator number followed by `e-17` or something like that, that means the number is multiplied by `10^(-17)`.
+The `fn`, `dn`, `rn` molds represent a floating point broken into several different pieces of information, such as the sign, the decimal exponent, and the number. If you've ever seen a calculator number followed by `e-17` or something like that, that means the number is multiplied by `10^(-17)`. We don't need to worry about these types too much for now.
 
 The `@r` auras represent floating points as a single piece of data.
 
 ![](Images/350.png)
 
-A single-precision float `@rs` uses a standard `32` bits to represent the number. Half, double, and quadruple are with respect to that 32 bits. These 4 implementations let you choose the right amount of precision for your application.
+A single-precision float `@rs` uses a standard `32` bits to represent the number. Half, double, and quadruple are defined with respect to that 32 bits. These 4 implementations let you choose the right amount of precision for your application.
 
 Here's how to read a `@r` floating point number.
 
@@ -599,14 +612,14 @@ Here's how to read a `@r` floating point number.
 ![](Images/400.png)
 ![](Images/410.png)
 
-It's also valid to write them without the exponent:
+It's also valid to write the float without the exponent:
 
 ```
 > .-0.0025
 .-2.5e-3
 ```
 
-We have the library utilities you'd expect for manipulating floating point.
+We have library utilities you'd expect for manipulating floating point.
 
 ```
 > (add:rs .2.5e1 .2.5e2)
@@ -639,7 +652,7 @@ This concludes our stroll through the standard library.
 
 ### Syntax
 
-Let's wrap up our lesson by briefly covering some various syntax you might find in the wild in Hoon code. We have already seen `@` which represents the most generic type of an atom. There are a few symbols which represent generic molds.
+Let's wrap up our lesson by briefly covering some various syntax forms you might find in Hoon code. We have already seen `@` which represents the most generic type of an atom. There are a few symbols which represent generic molds.
 
 ![](Images/450.png)
 
