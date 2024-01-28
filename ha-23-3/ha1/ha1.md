@@ -23,7 +23,7 @@ Links:
 - Simple Nock introduction: "https://blog.timlucmiptev.space/part1.html"
 - Official Nock documentation: "https://docs.urbit.org/language/nock"
 - Hoon syntax: "https://docs.urbit.org/courses/hoon-school/B-syntax"
-- Rune pronounciations: "https://developers.urbit.org/guides/core/hoon-school/A-intro"
+- Rune pronounciations: "https://developers.urbit.org/guides/core/hoon-school/A-intro#pronouncing-hoon"
 - Aura reference: "https://docs.urbit.org/language/hoon/reference/auras"
 ---
 
@@ -409,6 +409,104 @@ However, we can access all the matches with this notation:
 4
 ```
 
+## Hoon
+
+Let's begin our dive into the Hoon language.
+
+###  Runes
+
+Runes are combinations of two symbolic characters. They are Hoon's way of specifying operations -- like keywords in other languages. The simplest possible rune we can learn is the rune to make a cell -- `:-` (pronounced "colhep")
+```
+>  :-  1  2
+[1 2]
+```
+
+We don't have to just give atoms as input to the rune, we can give a cell:
+
+```
+>  :-  [1 2]  3
+[[1 2] 3]
+```
+
+Something important to note about Hoon's syntax is spacing. In particular, Hoon differentiates between an "ace" which is exactly one space, and a "gap", which is 2 or more spaces. If I try to run the previous code with just one space in between the parts, Dojo won't let me type it. But I can run it with three or more spaces in between. 
+```
+>  :-        1       2
+[1 2]
+```
+
+Or I can even press the enter key in between.
+```
+>  :-
+>  1
+>  2
+[1 2]
+```
+
+We mentioned that the rune is called "colhep". Hoon has a system by which every symbol used is mapped to a monosyllable name, so that each rune has a two syllable name. You don't have to learn them all immediately, but you'll learn them over time as you read and write Hoon code. Here is a link that has a table with all the pronounciations: https://developers.urbit.org/guides/core/hoon-school/A-intro#pronouncing-hoon
+
+Going back to our humble colhep rune, here we see something interesting.
+
+```
+:-  1  :-  2  3
+```
+ The colhep rune takes two arguments. But it seems that its second argument is not a number or a cell, but a colhep rune followed by two numbers. What's going on here? 
+
+Colhep is a rune with two children, like so
+
+![](Images/230.png)
+
+Each of these two children could be nouns, but more generally, they can be any valid Hoon expression that reduces to a noun.
+
+![](Images/260.png)
+
+What we did here is shown in the following image. It's perfectly correct Hoon. In this case the inner Hoon expression `:-  2  3` parses to the noun `[2 3]`
+
+![](Images/270.png)
+
+We can parse Hoon expressions as trees of runes and their children. It's very useful to be able to translate back and forth between a piece of Hoon and its tree form.
+
+![](Images/280.png)
+
+Consider the similar Hoon expression
+```
+:-  :-  1  2  3
+```
+
+Again, this may be slightly confusing at first. Is a rune a child of a rune? Does the second `:-` have three children? But no, the expression parses as a tree in the following way. The inner `:-` grabs the `1  2` as its two arguments, and reduces to a cell `[1 2]` That cell becomes the first argument of the outer `:-`.
+
+```
+> :-  :-  1  2  3
+[[1 2] 3]
+```
+
+![](Images/290.png)
+
+In general, a Hoon expression is parsed from innermost to outermost. A rune is read, indicating it has some number of children which should be complete expressions by themselves. We go into the first subexpression and possibly encounter another rune, or a noun. If rune has children that are all reduced nouns, we can reduce that rune. Then move onto the next rune.
+
+Here you can see an example of the steps in reducing a Hoon expression to a noun.
+```
+:-  :-  1  2  :-  3  4
+
+:-  [1 2]  :-  3  4
+
+:-  [1 2]  [3 4]
+
+[[1 2] [3 4]]
+
+```
+
+Here is an incomplete Hoon expression:
+```
+:-  :-  1  2
+```
+Is is the inner `:-` or the outer one which is missing a child? In this case it's the outer.
+
+How about this one?
+```
+:-  1  :-  2
+```
+In this case the inner `:-` is missing a child.
+
 ## Computation in Urbit
 We have just given a brief overview of the way that data is stored in your Urbit. However, we have said nothing about how the computer actually computes. 
 
@@ -480,104 +578,6 @@ _Some computer science nerd bait -- the Nock rules 0-5 are enough to make it Tur
 If you're interested, I would highly recommend this clear and simple Nock guide written by ~timluc-miptev: https://blog.timlucmiptev.space/part1.html
 
 The official Nock documentation is here: https://docs.urbit.org/language/nock
-
-## Hoon
-
-Let's begin our dive into the Hoon language.
-
-###  Runes
-
-Runes are combinations of two symbolic characters. They are Hoon's way of specifying operations -- like keywords in other languages. The simplest possible rune we can learn is the rune to make a cell -- `:-` (pronounced "colhep")
-```
->  :-  1  2
-[1 2]
-```
-
-We don't have to just give atoms as input to the rune, we can give a cell:
-
-```
->  :-  [1 2]  3
-[[1 2] 3]
-```
-
-Something important to note about Hoon's syntax is spacing. In particular, Hoon differentiates between an "ace" which is exactly one space, and a "gap", which is 2 or more spaces. If I try to run the previous code with just one space in between the parts, Dojo won't let me type it. But I can run it with three or more spaces in between. 
-```
->  :-        1       2
-[1 2]
-```
-
-Or I can even press the enter key in between.
-```
->  :-
->  1
->  2
-[1 2]
-```
-
-We mentioned that the rune is called "colhep". Hoon has a system by which every symbol used is mapped to a monosyllable name, so that each rune has a two syllable name. You don't have to learn them all immediately, but you'll learn them over time as you read and write Hoon code. Here is a link that has a table with all the pronounciations: https://developers.urbit.org/guides/core/hoon-school/A-intro
-
-Going back to our humble colhep rune, here we see something interesting.
-
-```
-:-  1  :-  2  3
-```
- The colhep rune takes two arguments. But it seems that its second argument is not a number or a cell, but a colhep rune followed by two numbers. What's going on here? 
-
-Colhep is a rune with two children, like so
-
-![](Images/230.png)
-
-Each of these two children could be nouns, but more generally, they can be any valid Hoon expression that reduces to a noun.
-
-![](Images/260.png)
-
-What we did here is shown in the following image. It's perfectly correct Hoon. In this case the inner Hoon expression `:-  2  3` parses to the noun `[2 3]`
-
-![](Images/270.png)
-
-We can parse Hoon expressions as trees of runes and their children. It's very useful to be able to translate back and forth between a piece of Hoon and its tree form.
-
-![](Images/280.png)
-
-Consider the similar Hoon expression
-```
-:-  :-  1  2  3
-```
-
-Again, this may be slightly confusing at first. Is a rune a child of a rune? Does the second `:-` have three children? But no, the expression parses as a tree in the following way. The inner `:-` grabs the `1  2` as its two arguments, and reduces to a cell `[1 2]` That cell becomes the first argument of the outer `:-`.
-
-```
-> :-  :-  1  2  3
-[[1 2] 3]
-```
-
-![](Images/290.png)
-
-In general, a Hoon expression is parsed from innermost to outermost. A rune is read, indicating it has some number of children which should be complete expressions by themselves. We go into the first subexpression and possibly encounter another rune, or a noun. If rune has children that are all reduced nouns, we can reduce that rune. Then move onto the next rune.
-
-Here you can see an example of the steps in reducing a Hoon expression to a noun.
-```
-:-  :-  1  2  :-  3  4
-
-:-  [1 2]  :-  3  4
-
-:-  [1 2]  [3 4]
-
-[[1 2] [3 4]]
-
-```
-
-Here is an incomplete Hoon expression:
-```
-:-  :-  1  2
-```
-Is is the inner `:-` or the outer one which is missing a child? In this case it's the outer.
-
-How about this one?
-```
-:-  1  :-  2
-```
-In this case the inner `:-` is missing a child.
 
 ## Nocking in Hoon
 Let's learn a few more runes that allow us to do Nock-like operations.
