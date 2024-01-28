@@ -21,9 +21,7 @@ Runes:
 - "`=^` (tisket)"
 - "`=~` (tissig)"
 Links:
-- ! Zap Runes: "https://docs.urbit.org/language/hoon/reference/rune/zap"
-- ~ Sig runes: "https://docs.urbit.org/language/hoon/reference/rune/sig"
-- Hoon School 7: Libraries: "https://docs.urbit.org/courses/hoon-school/H-libraries"
+
 - Hoon School 8: Testing Code: "https://docs.urbit.org/courses/hoon-school/I-testing"
 - Testing Code: "https://docs.urbit.org/userspace/apps/guides/unit-tests"
 - Neal Davis on Testing: "https://medium.com/dcspark/writing-robust-hoon-a-guide-to-urbit-unit-testing-82b2631fe20a"
