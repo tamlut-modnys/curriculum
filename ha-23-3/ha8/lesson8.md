@@ -26,6 +26,7 @@ Links:
 - Hoon School 7 Libraries: "https://docs.urbit.org/courses/hoon-school/H-libraries"
 - Hoon School 8 Testing Code: "https://docs.urbit.org/courses/hoon-school/I-testing"
 - Testing Code: "https://docs.urbit.org/userspace/apps/guides/unit-tests"
+- Neal Davis on Testing: "https://medium.com/dcspark/writing-robust-hoon-a-guide-to-urbit-unit-testing-82b2631fe20a"
 - Hoon School %say generators: "https://docs.urbit.org/courses/hoon-school/J-stdlib-text#say-generators"
 ---
 
