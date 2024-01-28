@@ -20,11 +20,6 @@ Runes:
 - "`~&` (sigpam)"
 - "`=^` (tisket)"
 - "`=~` (tissig)"
-Links:
-- Testing Code: "https://docs.urbit.org/userspace/apps/guides/unit-tests"
-- Neal Davis on Testing: "https://medium.com/dcspark/writing-robust-hoon-a-guide-to-urbit-unit-testing-82b2631fe20a"
-- %say generators: "https://docs.urbit.org/language/hoon/guides/generators#say-generators"
-- Hoon School %say generators: "https://docs.urbit.org/courses/hoon-school/J-stdlib-text#say-generators"
 ---
 
 # Building Production Code and Looking Towards the Future
