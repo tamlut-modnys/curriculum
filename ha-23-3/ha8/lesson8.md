@@ -247,7 +247,7 @@ Saving and running it gives us the following terminal output:
 ~[2 3 5 7]
 ```
 
-A final neat trick for logging is that adding `>` before a message to be printed to the terminal changes the color of the text.
+A final neat trick for logging is that adding `>` before a message to be printed to the terminal changes the color of the text. This works with `~&` but not `~|`.
 
 Green:
 ```
