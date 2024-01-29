@@ -368,7 +368,7 @@ Here we put `~zod` in a vase and unwrap it into a `@p` again.
 ~zod
 ```
 
-If there's a type conflict between the type specified and the type in the vase, `!>` fails.
+If there's a type conflict between the type specified and the type in the vase, `!<` fails.
 
 ```
 >  !<  @ud  !>  ~zod
