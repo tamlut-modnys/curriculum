@@ -17,7 +17,7 @@ Key Points:
 
 **Homework**: https://forms.gle/9sUfv9ufxk29V9qo6 
 
-**Video**: 
+**Video**: https://youtu.be/BQGLdNJpLJY 
 
 ## Administrative
 Please check [the course syllabus](https://docs.google.com/document/d/1wtlQT4sJiaegOpWo9yMzMx-ious3E-FR8rZ1-BcBvGk/edit?usp=sharing) for anything administrative you may need to know, or for a list of useful resources.
@@ -478,3 +478,5 @@ Although using the terminal is more challenging at first, learning it greatly un
 There are many resources online to help you learn these skills. The details will differ depending on whether you use Linux/Mac or Windows.
 
 In summary, to get started as a developer, you should get basic familiarity with using an IDE, using Git, and using the terminal.
+
+With these pieces in place, we are ready to start understanding Urbit in the next lesson.
