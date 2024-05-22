@@ -18,12 +18,12 @@ Runes:
 - "`.=` (dottis)"
 - "`.*` (dottar)"
 Links:
-- Booting and using your ship: "https://urbit.org/getting-started/cli "
+- Booting and using your fakeship: "https://docs.urbit.org/manual/getting-started/self-hosted/cli"
 - Setting up developer environment: "https://docs.urbit.org/courses/environment"
 - Simple Nock introduction: "https://blog.timlucmiptev.space/part1.html"
 - Official Nock documentation: "https://docs.urbit.org/language/nock"
 - Hoon syntax: "https://docs.urbit.org/courses/hoon-school/B-syntax"
-- Rune pronounciations: "https://developers.urbit.org/guides/core/hoon-school/A-intro"
+- Rune pronounciations: "https://docs.urbit.org/glossary/aural-ascii"
 - Aura reference: "https://docs.urbit.org/language/hoon/reference/auras"
 ---
 
@@ -32,7 +32,7 @@ Links:
 
 **Homework**: https://forms.gle/hxsNDQ1CxarobbaRA 
 
-**Video**: https://youtu.be/T4g1fOOVGLc
+**Video**: https://youtu.be/6CPCQl3qs0U 
 
 ## Urbit Preliminaries
 
@@ -40,13 +40,19 @@ So far, you may have heard talk about planets, moons, stars, and so on. What are
 
 Your planet that you use on the network is whats called a **liveship**. Live network identities are finite and valuable -- there are 4,294,901,760 planets, 65,280 stars, and 256 galaxies. To be safe with live identities, most people prefer to develop on what are called **fakeships**. You can run Urbit instances on your local machine that are not connected to the wider network. 
 
-To do so, first download the Urbit binary using the instructions here: https://urbit.org/getting-started/cli . Scroll down to section 2 and select the architecture of your system. Then copy and paste the command into your terminal, when you have navigated your terminal to the directory you want your /urbit folder to live in. A note -- Urbit will run on any Unix based machine. If you use Windows, we suggest Windows subsystem for Linux to simulate Linux running on Windows, or you can dual boot Linux.
+Let's get a fakeship up and running. This was a question in homework 0, but let's walk through it here. Before we proceed, we should note that Urbit will run on any UNIX based machine, so Mac or Linux. If you use Windows, we suggest dual booting Linux or using Windows Subsystem for Linux to simulate Linux inside of Windows.
 
-After you've done that, you'll want to navigate to your `/urbit` directory that you've just created and run the executable inside to boot an instance of a fakeship. We do this with the -F flag
 
+First make a `/urbit` folder on your computer where you want your Urbit files to live. Then navigate inside the newly created urbit directory with `cd`.
+
+Then navigate to [this page](https://docs.urbit.org/manual/getting-started/self-hosted/cli), scroll down to section 2 and select the architecture of your system, then copy and paste the command into your terminal. This will download the Urbit binary into your `/urbit` folder.
+
+Now we can run the Urbit executable we just downloaded to create an instance of a fakeship, with the command
 ```sh
 ./urbit -F zod
 ```
+
+The `-F` flag specifies a fakeship, and `zod` is the identity we give our fakeship.
 
 After a few minutes of processing, this will boot your fakezod -- you'll see a welcome screen. When a fakeship ship is already booted, simply run it from the directory containing your urbit executable with the command 
 
@@ -111,7 +117,7 @@ $ cp -r zod zod-backup
 
 To restore, simply delete zod, rename zod-backup to zod, and boot it from there.
 
-Optional further reading on setting up your Urbit dev environment is here: https://docs.urbit.org/courses/environment
+[Optional further reading on setting up your Urbit dev environment is here.](https://docs.urbit.org/courses/environment)
 
 ## Running Code in Dojo
 
@@ -149,29 +155,13 @@ We will be using the Dojo heavily throughout this course, so its good to get com
 
 * Pressing **up arrow** scrolls up through the history of things you've entered.
 * Pressing **down arrow** scrolls down through them. Keep pressing down arrow and you'll clear the line.
-* When you press enter and the bracket is outwards facing `>`, that means the last line was as complete Hoon expression that finished computing and returned a result. For example, a number by itself is a complete Hoon expression. If the bracket is inwards facing `<`, it means you have entered an incomplete Hoon expression. What you type next will be attached to the previous expression to try and complete it, unless you type **backspace/delete** to clear the incomplete line.
+* When you press enter and the bracket is outwards facing `>`, that means the last line was as complete Hoon expression that finished computing and returned a result. For example, a number by itself is a complete Hoon expression. 
+* If the bracket is inwards facing `<`, it means you have entered an incomplete Hoon expression. What you type next will be attached to the previous expression to try and complete it, unless you type **backspace/delete** to clear the incomplete line.
 * If you're ever stuck on a computation, perhaps an infinite loop, **Ctrl+c** kicks you out of it.
 * **Ctrl+a** to navigate to the beginning of the text line.
 * **Ctrl+e** to navigate to the end of the text line.
 * Completions: typing something incomplete and then pressing **tab** shows you the valid commands you can input to finish the line.
 
-## Optional Section: Liveship Development
-
-You can also develop on a liveship. I won't be teaching to this method, this is just something you can try out if you're curious and adventurous. Hoon School graduate and recent Hackathon Grand Prize winner ~migrev-dolseg made a tool that makes this much easier.
-
-First you'll want to spawn a moon or a comet. A moon is an Urbit instance whose identity is tied to your planet. There are `2^32` or more than 4 billion of them per planet, so you don't have to worry about bricking it. A comet is a cheap instance that can be generated by anyone and is untied to a sponsorship chain.
-
-Instructions to create a moon: https://docs.urbit.org/manual/os/basics#moons
-
-To create a comet: https://docs.urbit.org/manual/getting-started/self-hosted/cli
-
-Then, navigate to your ship's url, and either open the Dojo and run
-`|install ~dister-migrev-dolseg %eyas`
-
-Or search
-`~dister-migrev-dolseg under ‘Get Urbit Apps.’`
-
-%eyas is a text editor which lets you browse and edit the files in your ship directly on Mars, no mounting or committing necessary. This also means that you could just delete a vital file like hoon.hoon and break your ship, so be careful. It also has an integrated Dojo where you can run your code. This is a great tool to play around with, write code, explore your system, and even take notes, but as mentioned I will be teaching using the fakeship method.
 
 ## Data in Urbit
 What is your Urbit?
@@ -204,7 +194,7 @@ Here are some examples of nouns:
 ...
 ```
 
-But I just mentioned that Urbit's structured as a binary tree, and these are cells containing cells -- how these correspond to each other? These structures are actually isomorphic -- they are entirely the same structure, just represented two different ways. Here we can see the correspondence:
+But I just mentioned that Urbit's structured as a binary tree, and these are cells containing cells -- how these correspond to each other? These structures are the same, just represented two different ways. Here we can see the correspondence:
 ![](Images/030.png)
 
 In particular, note how a single number being replaced with a cell corresponds exactly to expanding a single node in the binary tree into a left and right branch.
@@ -231,7 +221,9 @@ To see this more clearly, we can also consider this equivalent representation. H
 
 ## Tree Navigation in Urbit
 
-Using the same tree we just examined, let's try this operation in the Dojo. First we need a way to store a piece of data in the Dojo's memory, under a name, so we can access it later. This is called pinning a face. **Important note**: this is not technically Hoon code, just a Dojo-specific shorcut. The distinction will be important later.
+Using the same tree we just examined, let's try this operation in the Dojo. First we need a way to store a piece of data in the Dojo's memory, under a name, so we can access it later. This is called pinning a face. 
+
+**Important note**: this is not technically Hoon code, just a Dojo-specific shorcut. The distinction will be important later.
 
 ```
 =a 1
@@ -247,29 +239,29 @@ Using the same tree we just examined, let's try this operation in the Dojo. Firs
 3
 ```
 
-Let's pin the tree data structure we were examining to the face `tree`.
+Let's pin the tree data structure we were examining to the face `mytree`.
 ```
-=tree [[[8 9] [10 11]] [[12 13] [14 15]]]
+=mytree [[[8 9] [10 11]] [[12 13] [14 15]]]
 ```
 
 Now, we can grab subtrees of the tree with the following syntax:
 ```
-> +5.tree
+> +5.mytree
 [10 11]
-> +10.tree
+> +10.mytree
 10
 ```
 
-The dot `.` means that we are searching for something within something else. `+5.tree` means search for the address `5` within the closest thing in memory called `tree`.
+The dot `.` means that we are searching for something within something else. `+5.mytree` means search for the address `5` within the closest thing in memory called `mytree`.
 
 We can even use it repeatedly.
 
 ```
-> +2.+5.tree
+> +2.+5.mytree
 10
 ```
 
-This means within the subtree at the `+5` address of `tree`, find the thing at the `+2` address.
+This means within the subtree at the `+5` address of `mytree`, find the thing at the `+2` address.
 
 ### Tuples
 
@@ -352,18 +344,18 @@ Above, when we used addresses to navigate within a tree, that's a bit like navig
 Lark notation uses the four characters, `-, +, <, >`. You always begin with `-`  or`+` to indicate left or right, then `<` or `>` to indicate left or right, then continue alternating between these pairs. To see an example, we can return to our previous tree example in the Dojo.
 
 ```
-> =tree [[[8 9] [10 11]] [[12 13] [14 15]]]
+> =mytree [[[8 9] [10 11]] [[12 13] [14 15]]]
 
-> -.tree
+> -.mytree
 [[8 9] 10 11]
 
-> +.tree
+> +.mytree
 [[12 13] 14 15]
 
-> -<.tree
+> -<.mytree
 [8 9]
 
-> -<-.tree
+> -<-.mytree
 8
 ```
 
@@ -372,16 +364,16 @@ Returning to our analogy of navigating in the real world, sometimes addresses ar
 In Urbit, we can assign what are called **faces** to parts of our tree. Going back to our Dojo example, we have the same tree, but with names attached to some parts of it.
 
 ```
-> =tree [[[8 9] [a=10 b=11]] [c=[d=12 13] [14 15]]]
-> a.tree
+> =mytree [[[8 9] [a=10 b=11]] [c=[d=12 13] [14 15]]]
+> a.mytree
 10
 
-> b.tree
+> b.mytree
 11
-> c.tree
+> c.mytree
 [d=12 13]
 
-> d.c.tree
+> d.c.mytree
 12
 ```
 
@@ -477,9 +469,9 @@ The point of this section is not to fully and completely understand Nock. Howeve
 
 _Some computer science nerd bait -- the Nock rules 0-5 are enough to make it Turing-complete. There are 12 rules total -- the rest are just for ease of annotation and can be reduced to combinations of rules 0-5._
 
-If you're interested, I would highly recommend this clear and simple Nock guide written by ~timluc-miptev: https://blog.timlucmiptev.space/part1.html
+If you're interested, I would highly recommend this [clear and simple Nock guide written by ~timluc-miptev.](https://blog.timlucmiptev.space/part1.html) 
 
-The official Nock documentation is here: https://docs.urbit.org/language/nock
+The official Nock documentation is [here](https://docs.urbit.org/language/nock).
 
 ## Hoon
 
@@ -508,13 +500,14 @@ Something important to note about Hoon's syntax is spacing. In particular, Hoon 
 
 Or I can even press the enter key in between.
 ```
->  :-
->  1
->  2
+> :-
+  1
+  2
 [1 2]
 ```
 
-We mentioned that the rune is called "colhep". Hoon has a system by which every symbol used is mapped to a monosyllable name, so that each rune has a two syllable name. You don't have to learn them all immediately, but you'll learn them over time as you read and write Hoon code. Here is a link that has a table with all the pronounciations: https://developers.urbit.org/guides/core/hoon-school/A-intro
+We mentioned that the rune is called "colhep". Hoon has a system by which every symbol used is mapped to a monosyllable name, so that each rune has a two syllable name. You don't have to learn them all immediately, but you'll learn them over time as you read and write Hoon code. If you're curious, [this link contains all the pronounciations](https://docs.urbit.org/glossary/aural-ascii).
+
 
 Going back to our humble colhep rune, here we see something interesting.
 
@@ -544,7 +537,7 @@ Consider the similar Hoon expression
 :-  :-  1  2  3
 ```
 
-Again, this may be slightly confusing at first. Is a rune a child of a rune? Does the second `:-` have three children? But no, the expression parses as a tree in the following way. The inner `:-` grabs the `1  2` as its two arguments, and reduces to a cell `[1 2]` That cell becomes the first argument of the outer `:-`.
+Again, this may be slightly confusing at first. The expression parses as a tree in the following way. The inner `:-` grabs the `1  2` as its two arguments, and reduces to a cell `[1 2]` That cell becomes the first argument of the outer `:-`.
 
 ```
 > :-  :-  1  2  3
@@ -553,7 +546,7 @@ Again, this may be slightly confusing at first. Is a rune a child of a rune? Doe
 
 ![](Images/290.png)
 
-In general, a Hoon expression is parsed from innermost to outermost. A rune is read, indicating it has some number of children which should be complete expressions by themselves. We go into the first subexpression and possibly encounter another rune, or a noun. If rune has children that are all reduced nouns, we can reduce that rune. Then move onto the next rune.
+In general, a Hoon expression is parsed from innermost to outermost. A rune is read, indicating it has some number of children which should be complete expressions by themselves. We go into the first subexpression and possibly encounter another rune, or a noun. If rune has children that are all just nouns, we can reduce that rune. Then move onto the next rune.
 
 Here you can see an example of the steps in reducing a Hoon expression to a noun.
 ```
@@ -578,6 +571,7 @@ How about this one?
 :-  1  :-  2
 ```
 In this case the inner `:-` is missing a child.
+
 
 ## Nocking in Hoon
 Let's learn a few more runes that allow us to do Nock-like operations.
@@ -651,15 +645,19 @@ However, if my goal is to add `1` to `5`, I can also just type the following in 
 ```
 .+  5
 ```
-Earlier I said that every Hoon expression has a subject and formula, but it seems like this is just a formula without a subject. What gives?
+Earlier we said that every Hoon expression has a subject and formula, but it seems like this is just a formula without a subject. What gives?
 
 It turns out that every expression you type into the Dojo is implicitly wrapped in a *hidden* `=>`, giving it a **default Dojo subject** to evaluate against.
 
 ![](Images/330.png)
 
-This default subject gives you access to many things such as standard definitions and libraries. We don't use this yet, but it will become important later. The important thing is that when you're coding in the Dojo, even if it looks like there's no subject, the subject is there.
+This default subject gives you access to many things such as standard definitions and libraries. We don't use these yet, but it will become important later. The important thing is that when you're coding in the Dojo, even if it looks like there's no subject, the subject is there.
 
-`.?` (dotwut) takes one child and returns 0 if that child reduces to a cell, 1 if it's an atom.
+So if you just enter the expression `.+ 5` in the Dojo, it's actually interpreted as:
+
+![](Images/335.png)
+
+Moving on, `.?` (dotwut) takes one child and returns 0 if that child reduces to a cell, 1 if it's an atom.
 
 ![](Images/340.png)
 
@@ -784,10 +782,10 @@ We don't have to start with an integer -- we can also go directly between differ
 
 Why is this the case? Because `~dozpel-bicreg-famtul` is the number`478.560.413.032`, which is the number representation of 'hello', converted to a `@p`.
 
-Hoon's type system has many more auras than what we can cover here. You can find a comprehensive reference here: https://docs.urbit.org/language/hoon/reference/auras 
+Hoon's type system has many more auras than what we can cover here. You can find a comprehensive reference [here](https://docs.urbit.org/language/hoon/reference/auras)
 
 ## Running Nock
-We will learn one final rune that will help you as you're learning Nock (wasn't in the live lecture due to time constraints). `.*` (dottar) takes a Nock subject and formula, and computes the result.
+Finally, let's cover one final rune that will help you while learning and working with Nock. `.*` (dottar) takes a Nock subject and formula, and computes the result.
 
 ![](Images/390.png)
 
