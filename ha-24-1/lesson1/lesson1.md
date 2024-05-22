@@ -715,7 +715,7 @@ We can test this fact with `.=` (dottis):
 %.y
 
 ```
-## Atoms and auras
+## Atoms and Auras
 
 So far, we have only been working with natural numbers. But for practical computing purposes, we need more data types such as negative numbers, floating point (decimal) numbers, text strings, and so on.
 
