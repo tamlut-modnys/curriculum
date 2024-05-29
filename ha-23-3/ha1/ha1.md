@@ -40,13 +40,19 @@ So far, you may have heard talk about planets, moons, stars, and so on. What are
 
 Your planet that you use on the network is whats called a **liveship**. Live network identities are finite and valuable -- there are 4,294,901,760 planets, 65,280 stars, and 256 galaxies. To be safe with live identities, most people prefer to develop on what are called **fakeships**. You can run Urbit instances on your local machine that are not connected to the wider network. 
 
-To do so, first download the Urbit binary using the instructions here: https://urbit.org/getting-started/cli . Scroll down to section 2 and select the architecture of your system. Then copy and paste the command into your terminal, when you have navigated your terminal to the directory you want your /urbit folder to live in. A note -- Urbit will run on any Unix based machine. If you use Windows, we suggest Windows subsystem for Linux to simulate Linux running on Windows, or you can dual boot Linux.
+Let's get a fakeship up and running. This was a question in homework 0, but let's walk through it here. Before we proceed, we should note that Urbit will run on any UNIX based machine, so Mac or Linux. If you use Windows, we suggest dual booting Linux or using Windows Subsystem for Linux to simulate Linux inside of Windows.
 
-After you've done that, you'll want to navigate to your `/urbit` directory that you've just created and run the executable inside to boot an instance of a fakeship. We do this with the -F flag
 
+First make a `/urbit` folder on your computer where you want your Urbit files to live. Then navigate inside the newly created urbit directory with `cd`.
+
+Then navigate to [this page](https://docs.urbit.org/manual/getting-started/self-hosted/cli), scroll down to section 2 and select the architecture of your system, then copy and paste the command into your terminal. This will download the Urbit binary into your `/urbit` folder.
+
+Now we can run the Urbit executable we just downloaded to create an instance of a fakeship, with the command
 ```sh
 ./urbit -F zod
 ```
+
+The `-F` flag specifies a fakeship, and `zod` is the identity we give our fakeship.
 
 After a few minutes of processing, this will boot your fakezod -- you'll see a welcome screen. When a fakeship ship is already booted, simply run it from the directory containing your urbit executable with the command 
 
@@ -111,7 +117,7 @@ $ cp -r zod zod-backup
 
 To restore, simply delete zod, rename zod-backup to zod, and boot it from there.
 
-Optional further reading on setting up your Urbit dev environment is here: https://docs.urbit.org/courses/environment
+[Optional further reading on setting up your Urbit dev environment is here.](https://docs.urbit.org/courses/environment)
 
 ## Running Code in Dojo
 
