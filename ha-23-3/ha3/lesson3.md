@@ -427,7 +427,7 @@ If we pass it a `@t` or `@rs`, it passes, but the value defaults to formatting i
 ~292277024401-.1.1..00.00.00..0000.0000.42f6.e666
 ```
 
-In practice, type unions are not used much with auras -- they are most commonly used with the `@tas` `term` constants that we learned in last lesson. As you'll recall, a `term` is a unique type in and of itself. Let's try an example.
+In practice, type unions are not used much with auras -- they are most commonly used with the `@tas` `term` constants that we learned in last lesson. As you'll recall, a `term` is both a value and a unique type in and of itself. Let's try an example.
 
 Here we pin to the Dojo subject a new type `reptile`, which is either a `%snake` `%lizard` or `%crocodile` constant.
 
