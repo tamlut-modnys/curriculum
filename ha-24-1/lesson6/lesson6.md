@@ -61,7 +61,6 @@ For example, in this core, the sample is the value `n=5`.
   |%
   ++  $  (gth n 10)
   --
-  $
 ```
 
 ![](Images/004.png)
